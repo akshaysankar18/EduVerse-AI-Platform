@@ -1,0 +1,171 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "roadmaps",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "roadmaps",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "completed", "order": "ASCENDING"  },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "roadmaps",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "subject",   "order": "ASCENDING"  },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "planners",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "status",    "order": "ASCENDING"  },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "planners",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",  "order": "ASCENDING" },
+        { "fieldPath": "status",  "order": "ASCENDING" },
+        { "fieldPath": "dueDate", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "planners",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "priority",  "order": "ASCENDING"  },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "planners",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",  "order": "ASCENDING"  },
+        { "fieldPath": "status",  "order": "ASCENDING"  },
+        { "fieldPath": "dueDate", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "notes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "updatedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "notes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "subject",   "order": "ASCENDING"  },
+        { "fieldPath": "updatedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "notes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",     "order": "ASCENDING"  },
+        { "fieldPath": "sourceType", "order": "ASCENDING"  },
+        { "fieldPath": "updatedAt",  "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "notes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "tags",      "arrayConfig": "CONTAINS" },
+        { "fieldPath": "updatedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "notes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId", "order": "ASCENDING" },
+        { "fieldPath": "title",  "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "quizAttempts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",      "order": "ASCENDING"  },
+        { "fieldPath": "completedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "quizAttempts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",      "order": "ASCENDING"  },
+        { "fieldPath": "subject",     "order": "ASCENDING"  },
+        { "fieldPath": "completedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "quizAttempts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",      "order": "ASCENDING"  },
+        { "fieldPath": "difficulty",  "order": "ASCENDING"  },
+        { "fieldPath": "completedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "chatHistory",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "chatHistory",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "updatedAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "analytics",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId",    "order": "ASCENDING"  },
+        { "fieldPath": "updatedAt", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "chatHistory",
+      "fieldPath": "messages",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "analytics",
+      "fieldPath": "subjectBreakdown",
+      "indexes": []
+    }
+  ]
+}

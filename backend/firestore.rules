@@ -1,0 +1,147 @@
+rules_version = '2';
+
+// ============================================================
+//  EduVerse AI — Firebase Firestore Security Rules
+//  ============================================================
+//  Principle: Users can only read and write their own data.
+//  All operations require authentication.
+//  No cross-user access except for explicitly shared resources.
+// ============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Shared helper functions ────────────────────────────────
+
+    /** Check the request comes from an authenticated user. */
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    /** Check the authenticated user owns this resource (by userId field). */
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    /** Check the authenticated user is accessing their own user document. */
+    function isSelf(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+
+    /** Check a field exists in the incoming data. */
+    function hasField(field) {
+      return field in request.resource.data;
+    }
+
+    /** Ensure the userId field in the doc matches the auth UID (prevents spoofing). */
+    function validOwnership() {
+      return isAuthenticated()
+          && request.resource.data.userId == request.auth.uid;
+    }
+
+    // ── /users/{uid} ──────────────────────────────────────────
+    // Document ID === Firebase UID.
+    // Users can read and write only their own profile.
+
+    match /users/{uid} {
+      allow read  : if isSelf(uid);
+      allow create: if isSelf(uid)
+                    && hasField('email')
+                    && hasField('name');
+      allow update: if isSelf(uid);
+      allow delete: if isSelf(uid);
+    }
+
+    // ── /study_plans/{planId} ──────────────────────────────────
+    // A study plan belongs to the user whose uid equals userId.
+
+    match /study_plans/{planId} {
+      allow read  : if isAuthenticated()
+                    && resource.data.userId == request.auth.uid;
+      allow create: if validOwnership()
+                    && hasField('title')
+                    && hasField('subject');
+      allow update: if isAuthenticated()
+                    && resource.data.userId == request.auth.uid
+                    // userId field may not be changed
+                    && (!('userId' in request.resource.data)
+                        || request.resource.data.userId == request.auth.uid);
+      allow delete: if isAuthenticated()
+                    && resource.data.userId == request.auth.uid;
+    }
+
+    // ── /tasks/{taskId} ───────────────────────────────────────
+
+    match /tasks/{taskId} {
+      allow read  : if isAuthenticated()
+                    && resource.data.userId == request.auth.uid;
+      allow create: if validOwnership()
+                    && hasField('title');
+      allow update: if isAuthenticated()
+                    && resource.data.userId == request.auth.uid
+                    && (!('userId' in request.resource.data)
+                        || request.resource.data.userId == request.auth.uid);
+      allow delete: if isAuthenticated()
+                    && resource.data.userId == request.auth.uid;
+    }
+
+    // ── /notes/{noteId} ───────────────────────────────────────
+
+    match /notes/{noteId} {
+      allow read  : if isAuthenticated()
+                    && resource.data.userId == request.auth.uid;
+      allow create: if validOwnership()
+                    && hasField('title');
+      allow update: if isAuthenticated()
+                    && resource.data.userId == request.auth.uid
+                    && (!('userId' in request.resource.data)
+                        || request.resource.data.userId == request.auth.uid);
+      allow delete: if isAuthenticated()
+                    && resource.data.userId == request.auth.uid;
+    }
+
+    // ── /quizzes/{quizId} ─────────────────────────────────────
+    // Quiz attempts are append-only (no update after creation).
+
+    match /quizzes/{quizId} {
+      allow read  : if isAuthenticated()
+                    && resource.data.userId == request.auth.uid;
+      allow create: if validOwnership()
+                    && hasField('subject')
+                    && hasField('totalQuestions');
+      // Quiz attempts are immutable once recorded
+      allow update: if false;
+      allow delete: if isAuthenticated()
+                    && resource.data.userId == request.auth.uid;
+    }
+
+    // ── /analytics/{uid} ──────────────────────────────────────
+    // Document ID === user UID. Upserted by the backend.
+
+    match /analytics/{uid} {
+      allow read  : if isSelf(uid);
+      allow create: if isSelf(uid);
+      allow update: if isSelf(uid);
+      allow delete: if isSelf(uid);
+    }
+
+    // ── /ai_chat_history/{chatId} ─────────────────────────────
+
+    match /ai_chat_history/{chatId} {
+      allow read  : if isAuthenticated()
+                    && resource.data.userId == request.auth.uid;
+      allow create: if validOwnership();
+      allow update: if isAuthenticated()
+                    && resource.data.userId == request.auth.uid
+                    && (!('userId' in request.resource.data)
+                        || request.resource.data.userId == request.auth.uid);
+      allow delete: if isAuthenticated()
+                    && resource.data.userId == request.auth.uid;
+    }
+
+    // ── Deny everything else ──────────────────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

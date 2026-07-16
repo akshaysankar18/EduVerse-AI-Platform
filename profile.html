@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile — EduVerse AI</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header"><div class="sidebar-logo-icon">E</div><span class="sidebar-logo-text">EduVerse <span style="color:var(--primary)">AI</span></span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <a href="dashboard.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="6" height="6" rx="1.5"/><rect x="10" y="2" width="6" height="6" rx="1.5"/><rect x="2" y="10" width="6" height="6" rx="1.5"/><rect x="10" y="10" width="6" height="6" rx="1.5"/></svg><span>Dashboard</span></a>
+      <a href="ai-mentor.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2C5.134 2 2 5.134 2 9s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z"/><path d="M7 9h1l1-3 1 6 1-3h1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AI Mentor</span><span class="nav-badge">AI</span></a>
+      <a href="study-planner.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="13" rx="2"/><path d="M6 2v2M12 2v2M2 7h14" stroke-linecap="round"/></svg><span>Study Planner</span></a>
+      <a href="notes-assistant.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 2h6l4 4v10a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M11 2v4h4M6 10h6M6 13h4" stroke-linecap="round"/></svg><span>Notes Assistant</span></a>
+      <a href="quiz-center.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="7"/><path d="M7 7c0-1.1.9-2 2-2s2 .9 2 2c0 1-.7 1.7-1.5 2L9 11" stroke-linecap="round"/><circle cx="9" cy="13.5" r=".75" fill="currentColor" stroke="none"/></svg><span>Quiz Center</span></a>
+      <div class="nav-section-label" style="margin-top:12px">Learning</div>
+      <a href="learning-roadmap.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15c3-3 4-9 7-9s4 6 7 9" stroke-linecap="round"/></svg><span>Learning Roadmap</span></a>
+      <a href="learning-resources.html" class="nav-item" id="nav-resources"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2H6a2 2 0 00-2 2v10a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6H6M12 9H6M12 12H8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Learning Resources</span></a>
+      <a href="career-hub.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 14l4-4 3 3 3-5 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Career Hub</span></a>
+      <a href="analytics.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15V9M7 15V6M11 15V4M15 15V8" stroke-linecap="round"/></svg><span>Analytics</span></a>
+      <div class="nav-section-label" style="margin-top:12px">Account</div>
+      <a href="profile.html" class="nav-item active"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="6" r="3"/><path d="M2 16c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke-linecap="round"/></svg><span>Profile</span></a>
+    </nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-avatar">L</div><div class="sidebar-user-info"><div class="sidebar-user-name">Learner</div><div class="sidebar-user-role">Student</div></div></div></div>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+    <header class="topbar">
+      <div class="topbar-title">Profile</div>
+      <div class="topbar-actions" style="margin-left:auto">
+        <button class="btn btn-outline btn-sm">Edit Profile</button>
+        <div class="topbar-avatar">A</div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Profile Card -->
+      <div class="content-card" style="margin-bottom:24px;overflow:visible" data-animate>
+        <div class="profile-cover">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar-lg">L</div>
+          </div>
+        </div>
+        <div style="padding:56px 32px 24px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between">
+            <div>
+              <div style="font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-bottom:4px" id="profile-name">Learner</div>
+              <div style="font-size:14px;color:var(--muted-light);margin-bottom:12px" id="profile-email-role">learner@eduverse.ai · Student</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <div class="badge badge-primary" id="profile-streak-badge">🔥 0 Day Streak</div>
+                <div class="badge badge-emerald">📚 Active Learner</div>
+                <div class="badge badge-gray" id="profile-level-badge">🏆 Level 1</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center">
+              <div>
+                <div style="font-size:24px;font-weight:800;color:var(--primary)" id="profile-hours">0.0h</div>
+                <div style="font-size:12px;color:var(--muted)">Study Hours</div>
+              </div>
+              <div>
+                <div style="font-size:24px;font-weight:800" id="profile-goals">0</div>
+                <div style="font-size:12px;color:var(--muted)">Goals Met</div>
+              </div>
+              <div>
+                <div style="font-size:24px;font-weight:800;color:var(--emerald)" id="profile-certs">0</div>
+                <div style="font-size:12px;color:var(--muted)">Certs Earned</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- Main Profile Layout: 2 Columns -->
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:20px" data-animate>
+
+        <!-- Column 1: Settings & Preferences -->
+        <div style="display:flex;flex-direction:column;gap:20px">
+          
+          <!-- Account Settings -->
+          <div class="content-card">
+            <div class="content-card-header"><div class="content-card-title">Account Settings</div></div>
+            <div class="content-card-body" style="display:flex;flex-direction:column;gap:16px">
+              <div>
+                <label style="font-size:13px;font-weight:600;color:var(--muted-light);display:block;margin-bottom:8px">Full Name</label>
+                <input type="text" class="input-field" value="Learner" id="settings-name-input">
+              </div>
+              <div>
+                <label style="font-size:13px;font-weight:600;color:var(--muted-light);display:block;margin-bottom:8px">Email Address</label>
+                <input type="email" class="input-field" value="learner@eduverse.ai" id="settings-email-input" disabled>
+              </div>
+              <div>
+                <label style="font-size:13px;font-weight:600;color:var(--muted-light);display:block;margin-bottom:8px">Learning Goal</label>
+                <select class="input-field" style="background:var(--bg-2)" id="settings-goal-select">
+                  <option value="JEE Preparation">JEE Preparation</option>
+                  <option value="NEET Preparation">NEET Preparation</option>
+                  <option value="UPSC Preparation">UPSC Preparation</option>
+                  <option value="Skill Development">Skill Development</option>
+                  <option value="Career Change">Career Change</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:13px;font-weight:600;color:var(--muted-light);display:block;margin-bottom:8px">Level</label>
+                <select class="input-field" style="background:var(--bg-2)" id="settings-level-select">
+                  <option value="School Student">School Student</option>
+                  <option value="College Student">College Student</option>
+                  <option value="University Student">University Student</option>
+                  <option value="Working Professional">Working Professional</option>
+                </select>
+              </div>
+              <button class="btn btn-primary" style="width:fit-content" id="btn-save-profile-settings"><span>Save Changes</span></button>
+            </div>
+          </div>
+
+          <!-- Preferences -->
+          <div class="content-card">
+            <div class="content-card-header"><div class="content-card-title">Preferences</div></div>
+            <div class="content-card-body" style="display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
+                <div><div style="font-size:14px;font-weight:600">Daily Study Reminder</div><div style="font-size:12px;color:var(--muted-light)">Get reminded to study daily</div></div>
+                <div style="width:40px;height:22px;background:var(--primary);border-radius:11px;position:relative;cursor:pointer"><div style="width:18px;height:18px;background:#000;border-radius:50%;position:absolute;right:2px;top:2px"></div></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
+                <div><div style="font-size:14px;font-weight:600">Spaced Repetition Alerts</div><div style="font-size:12px;color:var(--muted-light)">Smart revision reminders</div></div>
+                <div style="width:40px;height:22px;background:var(--primary);border-radius:11px;position:relative;cursor:pointer"><div style="width:18px;height:18px;background:#000;border-radius:50%;position:absolute;right:2px;top:2px"></div></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
+                <div><div style="font-size:14px;font-weight:600">Weekly Progress Email</div><div style="font-size:12px;color:var(--muted-light)">Summary sent every Sunday</div></div>
+                <div style="width:40px;height:22px;background:var(--border-light);border-radius:11px;position:relative;cursor:pointer"><div style="width:18px;height:18px;background:var(--muted);border-radius:50%;position:absolute;left:2px;top:2px"></div></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0">
+                <div><div style="font-size:14px;font-weight:600">AI Difficulty Adaption</div><div style="font-size:12px;color:var(--muted-light)">Auto-adjust quiz difficulty</div></div>
+                <div style="width:40px;height:22px;background:var(--primary);border-radius:11px;position:relative;cursor:pointer"><div style="width:18px;height:18px;background:#000;border-radius:50%;position:absolute;right:2px;top:2px"></div></div>
+              </div>
+              <div style="margin-top:8px">
+                <label style="font-size:13px;font-weight:600;color:var(--muted-light);display:block;margin-bottom:8px">Daily Study Goal</label>
+                <select class="input-field" style="background:var(--bg-2)">
+                  <option>1 hour</option>
+                  <option>2 hours</option>
+                  <option selected>3 hours</option>
+                  <option>4 hours</option>
+                  <option>5+ hours</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Column 2: Badges & Certificates -->
+        <div style="display:flex;flex-direction:column;gap:20px">
+          
+          <!-- Badges & Achievements -->
+          <div class="content-card">
+            <div class="content-card-header">
+              <div class="content-card-title">Badges & Achievements</div>
+            </div>
+            <div class="content-card-body" style="display:flex;flex-direction:column;gap:12px;max-height:360px;overflow-y:auto;padding-right:4px" id="profile-achievements-list">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Certificates -->
+          <div class="content-card">
+            <div class="content-card-header">
+              <div class="content-card-title">Earned Certificates</div>
+            </div>
+            <div class="content-card-body" style="display:flex;flex-direction:column;gap:12px" id="profile-certificates-list">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/global.js"></script>
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/profile.js"></script>
+
+</body>
+</html>

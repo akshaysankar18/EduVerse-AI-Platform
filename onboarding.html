@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalize Your Journey — EduVerse AI</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/onboarding.css">
+</head>
+<body class="onboarding-page">
+
+  <!-- Background decorative elements -->
+  <div class="onboarding-bg">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="onboarding-container">
+    <!-- Header/Logo -->
+    <header class="onboarding-header">
+      <a href="index.html" class="onboarding-logo">
+        <div class="logo-icon">E</div>
+        <span class="logo-text">EduVerse <span class="accent">AI</span></span>
+      </a>
+      <div class="step-progress-wrapper" style="display: none;">
+        <span class="step-counter">Step <span id="current-step-num">1</span> of 5</span>
+        <div class="progress-track">
+          <div class="progress-bar-fill" id="step-progress-bar" style="width: 20%;"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Card Container -->
+    <div class="onboarding-card-wrapper">
+      
+      <!-- STEP 1: AUTHENTICATION (SIGN UP / LOGIN) -->
+      <div class="onboarding-step-card active" id="step-auth">
+        <div class="auth-tabs">
+          <button class="auth-tab-btn active" onclick="switchAuthTab('signup')">Sign Up</button>
+          <button class="auth-tab-btn" onclick="switchAuthTab('login')">Log In</button>
+        </div>
+
+        <!-- Sign Up Form -->
+        <form id="signup-form" class="auth-form active" onsubmit="handleAuthSubmit(event, 'signup')">
+          <div class="form-header">
+            <h2>Create your AI learning account</h2>
+            <p>Unlock personalized paths, AI mentors, and real-time analytics.</p>
+          </div>
+          <div class="input-group">
+            <label for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" placeholder="John Doe" required>
+          </div>
+          <div class="input-group">
+            <label for="signup-email">Email Address</label>
+            <input type="email" id="signup-email" placeholder="you@example.com" required>
+          </div>
+          <div class="input-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" placeholder="••••••••" required>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="terms-agree" required>
+            <label for="terms-agree">I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a></label>
+          </div>
+          <button type="submit" class="btn btn-primary w-full justify-center">
+            <span>Continue with Email</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="auth-divider"><span>or continue with</span></div>
+          <div class="social-auth-grid">
+            <button type="button" class="btn btn-outline social-btn" onclick="continueSocial('Google')">
+              <span class="social-icon">Google</span>
+            </button>
+            <button type="button" class="btn btn-outline social-btn" onclick="continueSocial('GitHub')">
+              <span class="social-icon">GitHub</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form" onsubmit="handleAuthSubmit(event, 'login')">
+          <div class="form-header">
+            <h2>Welcome back</h2>
+            <p>Sign in to continue your personalized learning journey.</p>
+          </div>
+          <div class="input-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" placeholder="you@example.com" required>
+          </div>
+          <div class="input-group">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label for="login-password">Password</label>
+              <a href="#" class="forgot-link">Forgot?</a>
+            </div>
+            <input type="password" id="login-password" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-full justify-center">
+            <span>Access Dashboard</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="auth-divider"><span>or continue with</span></div>
+          <div class="social-auth-grid">
+            <button type="button" class="btn btn-outline social-btn" onclick="continueSocial('Google')">
+              <span class="social-icon">Google</span>
+            </button>
+            <button type="button" class="btn btn-outline social-btn" onclick="continueSocial('GitHub')">
+              <span class="social-icon">GitHub</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- STEP 2: LEARNER TYPE -->
+      <div class="onboarding-step-card" id="step-learner-type">
+        <div class="step-header">
+          <h2>Which describes you best?</h2>
+          <p>We'll tailor your dashboard, roadmaps, and style to match your peer group.</p>
+        </div>
+        <div class="options-grid cols-3">
+          <div class="option-card" onclick="selectOption('learner-type', 'school', this)">
+            <div class="option-icon">🏫</div>
+            <h3>School Student</h3>
+            <p>K-12, foundational classes, school subjects, board exams.</p>
+          </div>
+          <div class="option-card" onclick="selectOption('learner-type', 'college', this)">
+            <div class="option-icon">🎓</div>
+            <h3>College Student</h3>
+            <p>Universities, degrees, projects, semester preparation.</p>
+          </div>
+          <div class="option-card" onclick="selectOption('learner-type', 'aspirant', this)">
+            <div class="option-icon">📚</div>
+            <h3>Competitive Aspirant</h3>
+            <p>JEE, NEET, UPSC, GATE, CAT, and other public exams.</p>
+          </div>
+          <div class="option-card" onclick="selectOption('learner-type', 'jobseeker', this)">
+            <div class="option-icon">💼</div>
+            <h3>Job Seeker</h3>
+            <p>Interview preparation, portfolio building, technical tests.</p>
+          </div>
+          <div class="option-card" onclick="selectOption('learner-type', 'professional', this)">
+            <div class="option-icon">🚀</div>
+            <h3>Professional</h3>
+            <p>Upskilling, certification prep, specialized technologies.</p>
+          </div>
+          <div class="option-card" onclick="selectOption('learner-type', 'lifelong', this)">
+            <div class="option-icon">🌱</div>
+            <h3>Lifelong Learner</h3>
+            <p>Personal growth, general curiosity, new languages & skills.</p>
+          </div>
+        </div>
+        <div class="step-footer">
+          <button class="btn btn-outline" onclick="prevStep()">Back</button>
+          <button class="btn btn-primary" onclick="nextStep()" id="btn-learner-type-next" disabled>
+            <span>Continue</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: LEARNING GOALS & CURRENT SKILL LEVEL -->
+      <div class="onboarding-step-card" id="step-goals">
+        <div class="step-header">
+          <h2>Define your focus & expertise</h2>
+          <p>Tell us what you want to achieve and where you are starting from.</p>
+        </div>
+        
+        <div class="goals-content">
+          <div class="form-section">
+            <label class="section-title">What is your primary learning goal?</label>
+            <input type="text" class="input-field" id="primary-goal-input" placeholder="e.g. Master React & Node.js, Crack UPSC Civil Services, Learn organic chemistry" style="margin-bottom: 24px;">
+            
+            <label class="section-title">Popular suggestions for you:</label>
+            <div class="tags-cloud" id="goals-tags-container">
+              <!-- Dynamically populated or static baseline -->
+              <span class="tag-chip" onclick="selectGoalTag(this)">Crack JEE Mains 2026</span>
+              <span class="tag-chip" onclick="selectGoalTag(this)">Master Python & Data Science</span>
+              <span class="tag-chip" onclick="selectGoalTag(this)">Pass AWS Cloud Practitioner</span>
+              <span class="tag-chip" onclick="selectGoalTag(this)">Build Full-Stack Apps</span>
+              <span class="tag-chip" onclick="selectGoalTag(this)">Improve Public Speaking</span>
+              <span class="tag-chip" onclick="selectGoalTag(this)">Prepare for UPSC History</span>
+            </div>
+          </div>
+
+          <div class="form-section" style="margin-top: 32px;">
+            <label class="section-title">What is your current level in this topic?</label>
+            <div class="level-selector-row">
+              <div class="level-card" onclick="selectOption('skill-level', 'beginner', this)">
+                <div class="level-badge beginner">Beginner</div>
+                <h4>New to the subject</h4>
+                <p>Starting from absolute scratch with basic concepts.</p>
+              </div>
+              <div class="level-card" onclick="selectOption('skill-level', 'intermediate', this)">
+                <div class="level-badge intermediate">Intermediate</div>
+                <h4>Know the basics</h4>
+                <p>Understand fundamentals but need depth and practice.</p>
+              </div>
+              <div class="level-card" onclick="selectOption('skill-level', 'advanced', this)">
+                <div class="level-badge advanced">Advanced</div>
+                <h4>Highly familiar</h4>
+                <p>Looking to refine complex skills, get mock tests, and deep reviews.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-footer">
+          <button class="btn btn-outline" onclick="prevStep()">Back</button>
+          <button class="btn btn-primary" onclick="nextStep()" id="btn-goals-next" disabled>
+            <span>Continue</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 4: STUDY TIME & STYLE -->
+      <div class="onboarding-step-card" id="step-preferences">
+        <div class="step-header">
+          <h2>Daily schedule & learning style</h2>
+          <p>We'll construct custom study calendars and adjust the AI mentor's feedback style.</p>
+        </div>
+
+        <div class="preferences-content">
+          <div class="form-section">
+            <label class="section-title">How much time can you commit daily?</label>
+            <div class="time-options">
+              <div class="time-card" onclick="selectOption('study-time', 'light', this)">
+                <span class="time-icon">⚡</span>
+                <div class="time-details">
+                  <h4>Light commitment</h4>
+                  <p>&lt; 1 hour / day</p>
+                </div>
+              </div>
+              <div class="time-card" onclick="selectOption('study-time', 'moderate', this)">
+                <span class="time-icon">🔥</span>
+                <div class="time-details">
+                  <h4>Balanced study</h4>
+                  <p>1 - 2 hours / day</p>
+                </div>
+              </div>
+              <div class="time-card" onclick="selectOption('study-time', 'focused', this)">
+                <span class="time-icon">🎯</span>
+                <div class="time-details">
+                  <h4>Deep preparation</h4>
+                  <p>2 - 4 hours / day</p>
+                </div>
+              </div>
+              <div class="time-card" onclick="selectOption('study-time', 'hardcore', this)">
+                <span class="time-icon">🚀</span>
+                <div class="time-details">
+                  <h4>Intensive bootcamp</h4>
+                  <p>4+ hours / day</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section" style="margin-top: 32px;">
+            <label class="section-title">What is your preferred learning style?</label>
+            <div class="options-grid cols-4">
+              <div class="option-card compact" onclick="selectOption('learning-style', 'visual', this)">
+                <div class="option-emoji">📊</div>
+                <h4>Visual / Interactive</h4>
+                <p>Videos, charts, and maps.</p>
+              </div>
+              <div class="option-card compact" onclick="selectOption('learning-style', 'conversational', this)">
+                <div class="option-emoji">🤖</div>
+                <h4>Conversational AI</h4>
+                <p>Q&amp;A sessions with mentor.</p>
+              </div>
+              <div class="option-card compact" onclick="selectOption('learning-style', 'quiz', this)">
+                <div class="option-emoji">📝</div>
+                <h4>Quiz &amp; Practice</h4>
+                <p>Test-first, learn from errors.</p>
+              </div>
+              <div class="option-card compact" onclick="selectOption('learning-style', 'reading', this)">
+                <div class="option-emoji">📖</div>
+                <h4>Structured Reading</h4>
+                <p>Detailed notes &amp; textbook styles.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-footer">
+          <button class="btn btn-outline" onclick="prevStep()">Back</button>
+          <button class="btn btn-primary" onclick="startGenerationStep()">
+            <span>Generate My Learning Universe</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 5: ANIMATED JOURNEY BUILDING (LOADING SCREEN) -->
+      <div class="onboarding-step-card loading-card" id="step-loading">
+        <div class="loading-wrapper">
+          <div class="portal-spinner">
+            <div class="spinner-ring ring-outer"></div>
+            <div class="spinner-ring ring-middle"></div>
+            <div class="spinner-ring ring-inner"></div>
+            <div class="spinner-core">E</div>
+          </div>
+          
+          <h2 class="loading-title">Building Your Personalized Learning Journey</h2>
+          <p class="loading-subtitle">Synthesizing multiple AI agents to match your profile...</p>
+
+          <div class="loading-tasks">
+            <div class="loading-task-item" id="task-profile">
+              <span class="status-indicator"></span>
+              <span class="task-text">Creating learner profile and settings...</span>
+            </div>
+            <div class="loading-task-item" id="task-mentor">
+              <span class="status-indicator"></span>
+              <span class="task-text">Customizing AI Mentor conversational parameters...</span>
+            </div>
+            <div class="loading-task-item" id="task-planner">
+              <span class="status-indicator"></span>
+              <span class="task-text">Calibrating Study Planner and daily calendar templates...</span>
+            </div>
+            <div class="loading-task-item" id="task-roadmap">
+              <span class="status-indicator"></span>
+              <span class="task-text">Structuring milestone-based learning roadmap...</span>
+            </div>
+            <div class="loading-task-item" id="task-quizzes">
+              <span class="status-indicator"></span>
+              <span class="task-text">Preparing adaptive quiz banks and analytics dashboards...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script src="js/onboarding.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Center — EduVerse AI</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header"><div class="sidebar-logo-icon">E</div><span class="sidebar-logo-text">EduVerse <span style="color:var(--primary)">AI</span></span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <a href="dashboard.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="6" height="6" rx="1.5"/><rect x="10" y="2" width="6" height="6" rx="1.5"/><rect x="2" y="10" width="6" height="6" rx="1.5"/><rect x="10" y="10" width="6" height="6" rx="1.5"/></svg><span>Dashboard</span></a>
+      <a href="ai-mentor.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2C5.134 2 2 5.134 2 9s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z"/><path d="M7 9h1l1-3 1 6 1-3h1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AI Mentor</span><span class="nav-badge">AI</span></a>
+      <a href="study-planner.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="13" rx="2"/><path d="M6 2v2M12 2v2M2 7h14" stroke-linecap="round"/></svg><span>Study Planner</span></a>
+      <a href="notes-assistant.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 2h6l4 4v10a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M11 2v4h4M6 10h6M6 13h4" stroke-linecap="round"/></svg><span>Notes Assistant</span></a>
+      <a href="quiz-center.html" class="nav-item active"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="7"/><path d="M7 7c0-1.1.9-2 2-2s2 .9 2 2c0 1-.7 1.7-1.5 2L9 11" stroke-linecap="round"/><circle cx="9" cy="13.5" r=".75" fill="currentColor" stroke="none"/></svg><span>Quiz Center</span></a>
+      <div class="nav-section-label" style="margin-top:12px">Learning</div>
+      <a href="learning-roadmap.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15c3-3 4-9 7-9s4 6 7 9" stroke-linecap="round"/></svg><span>Learning Roadmap</span></a>
+      <a href="learning-resources.html" class="nav-item" id="nav-resources"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2H6a2 2 0 00-2 2v10a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6H6M12 9H6M12 12H8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Learning Resources</span></a>
+      <a href="career-hub.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 14l4-4 3 3 3-5 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Career Hub</span></a>
+      <a href="analytics.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15V9M7 15V6M11 15V4M15 15V8" stroke-linecap="round"/></svg><span>Analytics</span></a>
+      <div class="nav-section-label" style="margin-top:12px">Account</div>
+      <a href="profile.html" class="nav-item"><svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="6" r="3"/><path d="M2 16c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke-linecap="round"/></svg><span>Profile</span></a>
+    </nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-avatar">L</div><div class="sidebar-user-info"><div class="sidebar-user-name">Learner</div><div class="sidebar-user-role">Student</div></div></div></div>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+    <header class="topbar">
+      <div class="topbar-title">Quiz Center</div>
+      <div class="topbar-actions" style="margin-left:auto">
+        <div class="badge badge-primary"><span class="glow-dot" style="width:5px;height:5px"></span>AI Powered</div>
+        <div class="topbar-avatar">A</div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div style="display:grid;grid-template-columns:320px 1fr;gap:24px">
+
+        <!-- Config Panel -->
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="content-card">
+            <div class="content-card-header"><div class="content-card-title">Generate Quiz</div></div>
+            <div class="content-card-body" style="display:flex;flex-direction:column;gap:16px">
+
+              <div>
+                <label style="font-size:13px;font-weight:600;color:var(--muted-light);display:block;margin-bottom:8px">Subject</label>
+                <select class="input-field" id="quiz-subject" style="background:var(--bg-2)">
+                  <option>Mathematics</option>
+                  <option>Physics</option>
+                  <option selected>Chemistry</option>
+                  <option>Biology</option>
+                  <option>Computer Science</option>
+                  <option>History</option>
+                  <option>Economics</option>
+                  <option>English</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="font-size:13px;font-weight:600;color:var(--muted-light);display:block;margin-bottom:8px">Topic</label>
+                <input type="text" class="input-field" id="quiz-topic" placeholder="e.g., Integration by Parts" value="Thermodynamics">
+              </div>
+
+              <div>
+                <label style="font-size:13px;font-weight:600;color:var(--muted-light);display:block;margin-bottom:8px">Difficulty</label>
+                <div style="display:flex;gap:6px">
+                  <button class="difficulty-btn" onclick="setDifficulty('easy',this)" style="flex:1;padding:8px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg-2);font-size:12px;font-weight:600;color:var(--muted-light);cursor:pointer;transition:all 0.15s">Easy</button>
+                  <button class="difficulty-btn active" onclick="setDifficulty('medium',this)" style="flex:1;padding:8px;border-radius:var(--radius);border:1px solid var(--primary);background:var(--primary-glow);font-size:12px;font-weight:600;color:var(--primary);cursor:pointer;transition:all 0.15s">Medium</button>
+                  <button class="difficulty-btn" onclick="setDifficulty('hard',this)" style="flex:1;padding:8px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg-2);font-size:12px;font-weight:600;color:var(--muted-light);cursor:pointer;transition:all 0.15s">Hard</button>
+                </div>
+              </div>
+
+              <div>
+                <label style="font-size:13px;font-weight:600;color:var(--muted-light);display:block;margin-bottom:8px">Number of Questions</label>
+                <div style="display:flex;gap:6px">
+                  <button onclick="setQCount(5,this)" style="flex:1;padding:8px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg-2);font-size:12px;font-weight:600;color:var(--muted-light);cursor:pointer;transition:all 0.15s">5</button>
+                  <button onclick="setQCount(10,this)" style="flex:1;padding:8px;border-radius:var(--radius);border:1px solid var(--primary);background:var(--primary-glow);font-size:12px;font-weight:600;color:var(--primary);cursor:pointer;transition:all 0.15s">10</button>
+                  <button onclick="setQCount(20,this)" style="flex:1;padding:8px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg-2);font-size:12px;font-weight:600;color:var(--muted-light);cursor:pointer;transition:all 0.15s">20</button>
+                </div>
+              </div>
+
+              <div>
+                <label style="font-size:13px;font-weight:600;color:var(--muted-light);display:block;margin-bottom:8px">Quiz Type</label>
+                <select class="input-field" style="background:var(--bg-2)">
+                  <option>Multiple Choice (MCQ)</option>
+                  <option>True / False</option>
+                  <option>Fill in the Blank</option>
+                  <option>Mixed</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary w-full" id="generate-quiz-btn" style="justify-content:center;margin-top:4px">
+                <span>✦ Generate Quiz</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Past Quiz Scores -->
+          <div class="content-card">
+            <div class="content-card-header"><div class="content-card-title">Past Scores</div></div>
+            <div class="content-card-body" style="padding:12px">
+              <div style="display:flex;flex-direction:column;gap:8px" id="past-scores-list">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz Area -->
+        <div>
+          <!-- Pre-generate placeholder -->
+          <div id="quiz-placeholder" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:400px;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl)">
+            <div style="font-size:48px;margin-bottom:20px">⚡</div>
+            <div style="font-size:20px;font-weight:700;margin-bottom:10px">No quizzes available</div>
+            <div style="font-size:14px;color:var(--muted-light);max-width:320px">Generate one to test your knowledge!</div>
+          </div>
+
+          <!-- Actual Quiz -->
+          <div id="quiz-area" style="display:none">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+              <div>
+                <div style="font-size:18px;font-weight:800">Thermodynamics Quiz</div>
+                <div style="font-size:13px;color:var(--muted-light)">Chemistry · Medium · 10 Questions</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="font-size:14px;font-weight:600">Q 1 / 10</div>
+                <div style="width:120px;height:6px;background:var(--border);border-radius:var(--radius-full)">
+                  <div style="width:10%;height:100%;background:var(--primary);border-radius:var(--radius-full);transition:width 0.5s ease"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <div class="content-card-body" style="padding:32px">
+                <div style="font-size:12px;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px">Question 1</div>
+                <div style="font-size:18px;font-weight:700;line-height:1.5;margin-bottom:28px">According to the Second Law of Thermodynamics, which statement is correct?</div>
+
+                <div style="display:flex;flex-direction:column;gap:10px" id="quiz-options">
+                  <div class="quiz-option" data-correct="false" data-option="A">
+                    <div class="quiz-option-letter">A</div>
+                    Energy can be created in an isolated system
+                  </div>
+                  <div class="quiz-option" data-correct="true" data-option="B">
+                    <div class="quiz-option-letter">B</div>
+                    The entropy of an isolated system never decreases
+                  </div>
+                  <div class="quiz-option" data-correct="false" data-option="C">
+                    <div class="quiz-option-letter">C</div>
+                    Heat flows from cold to hot bodies spontaneously
+                  </div>
+                  <div class="quiz-option" data-correct="false" data-option="D">
+                    <div class="quiz-option-letter">D</div>
+                    All processes are reversible given enough energy
+                  </div>
+                </div>
+
+                <!-- Explanation (hidden until answered) -->
+                <div id="quiz-explanation" style="display:none;margin-top:24px;padding:20px;background:var(--primary-glow);border:1px solid rgba(124,255,79,0.2);border-radius:var(--radius-lg)">
+                  <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px">✦ Explanation</div>
+                  <div style="font-size:14px;color:var(--text-80);line-height:1.7">The Second Law states that in any thermodynamic process, the total entropy of an isolated system tends to increase over time. This means energy spontaneously disperses — heat flows from hot to cold, not the other way around. Option B correctly captures this fundamental principle.</div>
+                  <div style="margin-top:16px;display:flex;gap:10px">
+                    <button class="btn btn-outline btn-sm" onclick="askAboutThis()">Ask AI to elaborate</button>
+                    <button class="btn btn-primary btn-sm" onclick="nextQuestion()"><span>Next Question →</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/global.js"></script>
+<script src="js/api.js"></script>
+<script src="js/quiz-center.js"></script>
+</body>
+</html>

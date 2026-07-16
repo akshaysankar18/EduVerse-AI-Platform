@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — EduVerse AI</title>
+  <meta name="description" content="EduVerse AI Dashboard — your personalized learning command center.">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<div class="app-layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo-icon">E</div>
+      <span class="sidebar-logo-text">EduVerse <span style="color:var(--primary)">AI</span></span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <a href="dashboard.html" class="nav-item active" id="nav-dashboard">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="6" height="6" rx="1.5"/><rect x="10" y="2" width="6" height="6" rx="1.5"/>
+          <rect x="2" y="10" width="6" height="6" rx="1.5"/><rect x="10" y="10" width="6" height="6" rx="1.5"/>
+        </svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="ai-mentor.html" class="nav-item" id="nav-mentor">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 2C5.134 2 2 5.134 2 9s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z"/>
+          <path d="M7 9h1l1-3 1 6 1-3h1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>AI Mentor</span>
+        <span class="nav-badge">AI</span>
+      </a>
+      <a href="study-planner.html" class="nav-item" id="nav-planner">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="3" width="14" height="13" rx="2"/>
+          <path d="M6 2v2M12 2v2M2 7h14" stroke-linecap="round"/>
+        </svg>
+        <span>Study Planner</span>
+      </a>
+      <a href="notes-assistant.html" class="nav-item" id="nav-notes">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M5 2h6l4 4v10a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/>
+          <path d="M11 2v4h4M6 10h6M6 13h4" stroke-linecap="round"/>
+        </svg>
+        <span>Notes Assistant</span>
+      </a>
+      <a href="quiz-center.html" class="nav-item" id="nav-quiz">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="9" cy="9" r="7"/>
+          <path d="M7 7c0-1.1.9-2 2-2s2 .9 2 2c0 1-.7 1.7-1.5 2L9 11" stroke-linecap="round"/>
+          <circle cx="9" cy="13.5" r=".75" fill="currentColor" stroke="none"/>
+        </svg>
+        <span>Quiz Center</span>
+      </a>
+
+      <div class="nav-section-label" style="margin-top:12px">Learning</div>
+      <a href="learning-roadmap.html" class="nav-item" id="nav-roadmap">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 15c3-3 4-9 7-9s4 6 7 9" stroke-linecap="round"/>
+          <circle cx="3" cy="15" r="1.5" fill="currentColor" stroke="none"/>
+          <circle cx="10" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+          <circle cx="17" cy="15" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+        <span>Learning Roadmap</span>
+      </a>
+      <a href="learning-resources.html" class="nav-item" id="nav-resources">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2H6a2 2 0 00-2 2v10a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2z" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 6H6M12 9H6M12 12H8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Learning Resources</span>
+      </a>
+      <a href="career-hub.html" class="nav-item" id="nav-career">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 14l4-4 3 3 3-5 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="1" y="1" width="16" height="16" rx="2" opacity="0"/>
+        </svg>
+        <span>Career Hub</span>
+      </a>
+      <a href="analytics.html" class="nav-item" id="nav-analytics">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 15V9M7 15V6M11 15V4M15 15V8" stroke-linecap="round"/>
+        </svg>
+        <span>Analytics</span>
+      </a>
+
+      <div class="nav-section-label" style="margin-top:12px">Account</div>
+      <a href="profile.html" class="nav-item" id="nav-profile">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="9" cy="6" r="3"/>
+          <path d="M2 16c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke-linecap="round"/>
+        </svg>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">L</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Learner</div>
+          <div class="sidebar-user-role">Student</div>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M5 3l4 4-4 4" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN AREA ============ -->
+  <div class="main-area">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-title">Dashboard</div>
+      <div class="topbar-search">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="6" cy="6" r="4"/><path d="M9.5 9.5l2.5 2.5" stroke-linecap="round"/>
+        </svg>
+        <input type="text" placeholder="Search topics, notes..." id="global-search">
+        <kbd style="font-size:10px;color:var(--muted);background:var(--border);padding:2px 6px;border-radius:4px;font-family:var(--font-mono)">⌘K</kbd>
+      </div>
+      <div class="topbar-actions">
+        <button class="topbar-btn" data-tooltip="Notifications" style="position:relative">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 2a5 5 0 00-5 5v2l-1.5 2h13L13 9V7a5 5 0 00-5-5z"/>
+            <path d="M6.5 13a1.5 1.5 0 003 0" stroke-linecap="round"/>
+          </svg>
+          <span class="notif-dot"></span>
+        </button>
+        <button class="topbar-btn" data-tooltip="Settings">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="8" cy="8" r="2.5"/>
+            <path d="M8 2v1.5M8 12.5V14M2 8h1.5M12.5 8H14M3.5 3.5l1 1M11.5 11.5l1 1M3.5 12.5l1-1M11.5 4.5l1-1"/>
+          </svg>
+        </button>
+        <div class="topbar-avatar">A</div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="page-content">
+
+      <!-- Welcome Banner -->
+      <div style="background:linear-gradient(135deg,rgba(124,255,79,0.08),rgba(16,185,129,0.05));border:1px solid rgba(124,255,79,0.12);border-radius:var(--radius-xl);padding:28px 32px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between" data-animate>
+        <div>
+          <div style="font-size:13px;color:var(--muted-light);margin-bottom:6px" id="welcome-user-label">Good evening, Learner 👋</div>
+          <div style="font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px" id="welcome-user-goal">Ready to learn something amazing today?</div>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:12px">
+            <div class="badge badge-primary" id="welcome-streak-badge">
+              <span class="glow-dot" style="width:6px;height:6px"></span>
+              0 Days streak 🔥
+            </div>
+            <div class="badge badge-emerald" id="welcome-goal-badge">0% Goal</div>
+            <div class="badge badge-gray" id="welcome-tasks-remaining">0 Tasks Remaining</div>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Today's Goal</div>
+          <div style="font-size:28px;font-weight:800;color:var(--primary)" id="dashboard-hours-studied">0.0 hrs</div>
+          <div style="font-size:13px;color:var(--muted)" id="dashboard-hours-label">of 3.0 hrs studied</div>
+          <div class="progress-bar" style="width:160px;margin-top:10px">
+            <div class="progress-fill" id="dashboard-hours-progress" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px">
+        <div class="stat-card" data-animate data-delay="0.1s">
+          <div class="stat-card-label">
+            <div class="icon-box icon-box-sm">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M7 1v12M1 7h12" stroke-linecap="round"/>
+              </svg>
+            </div>
+            Study Streak
+          </div>
+          <div class="stat-card-value text-primary" id="dashboard-stat-streak">0 Days</div>
+          <div class="stat-card-sub">Days in a row</div>
+        </div>
+        <div class="stat-card" data-animate data-delay="0.15s">
+          <div class="stat-card-label">
+            <div class="icon-box icon-box-sm icon-box-emerald">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="7" cy="7" r="5"/>
+                <path d="M7 4v3l2 2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            Study Hours
+          </div>
+          <div class="stat-card-value" id="dashboard-stat-hours">0 hrs</div>
+          <div class="stat-card-sub">This week</div>
+        </div>
+        <div class="stat-card" data-animate data-delay="0.2s">
+          <div class="stat-card-label">
+            <div class="icon-box icon-box-sm">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M7 1l1.5 3.5H12L9 6.5 10.5 10 7 8 3.5 10 5 6.5 2 4.5h3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Goals Met
+          </div>
+          <div class="stat-card-value" id="dashboard-stat-goals">No goals completed</div>
+          <div class="stat-card-sub">This month</div>
+        </div>
+        <div class="stat-card" data-animate data-delay="0.25s">
+          <div class="stat-card-label">
+            <div class="icon-box icon-box-sm icon-box-gray">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M2 12l3-3 3 2 4-5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Quiz Score
+          </div>
+          <div class="stat-card-value" id="dashboard-stat-accuracy">No quizzes taken yet</div>
+          <div class="stat-card-sub">Avg this week</div>
+        </div>
+      </div>
+
+      <!-- 2 Column Layout -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+
+        <!-- Continue Learning -->
+        <div class="content-card" data-animate>
+          <div class="content-card-header">
+            <div class="content-card-title">Continue Learning</div>
+            <a href="#" style="font-size:13px;color:var(--primary)">View all →</a>
+          </div>
+          <div class="content-card-body" style="display:flex;flex-direction:column;gap:14px" id="dashboard-roadmaps-list">
+          </div>
+        </div>
+
+        <!-- Today's Tasks -->
+        <div class="content-card" data-animate data-delay="0.1s">
+          <div class="content-card-header">
+            <div class="content-card-title">Today's Tasks</div>
+            <a href="study-planner.html" style="font-size:13px;color:var(--primary)">Planner →</a>
+          </div>
+          <div class="content-card-body" id="dashboard-tasks-list">
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Column Layout -->
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px">
+
+        <!-- AI Recommendations -->
+        <div class="content-card" data-animate>
+          <div class="content-card-header">
+            <div class="content-card-title">
+              <span style="display:flex;align-items:center;gap:8px">
+                <span style="color:var(--primary)">✦</span>
+                AI Recommendations
+              </span>
+            </div>
+            <div class="badge badge-primary" style="font-size:11px">Personalized</div>
+          </div>
+          <div class="content-card-body" style="display:flex;flex-direction:column;gap:14px" id="dashboard-recommendations-list">
+          </div>
+        </div>
+
+        <!-- Quick Actions + Activity -->
+        <div style="display:flex;flex-direction:column;gap:20px">
+
+          <!-- Quick Actions -->
+          <div class="content-card" data-animate>
+            <div class="content-card-header">
+              <div class="content-card-title">Quick Actions</div>
+            </div>
+            <div class="content-card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <a href="ai-mentor.html" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);transition:all var(--transition);text-decoration:none" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+                <span style="font-size:22px">🧠</span>
+                <span style="font-size:12px;font-weight:600;color:var(--text-80);text-align:center">Ask AI</span>
+              </a>
+              <a href="quiz-center.html" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);transition:all var(--transition);text-decoration:none" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+                <span style="font-size:22px">⚡</span>
+                <span style="font-size:12px;font-weight:600;color:var(--text-80);text-align:center">Quick Quiz</span>
+              </a>
+              <a href="notes-assistant.html" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);transition:all var(--transition);text-decoration:none" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+                <span style="font-size:22px">📁</span>
+                <span style="font-size:12px;font-weight:600;color:var(--text-80);text-align:center">Upload Notes</span>
+              </a>
+              <a href="career-hub.html" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);transition:all var(--transition);text-decoration:none" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+                <span style="font-size:22px">🚀</span>
+                <span style="font-size:12px;font-weight:600;color:var(--text-80);text-align:center">Career Hub</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="content-card" data-animate data-delay="0.1s">
+            <div class="content-card-header">
+              <div class="content-card-title">Recent Activity</div>
+            </div>
+             <div class="content-card-body" id="recent-activity-list">
+             </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/global.js"></script>
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

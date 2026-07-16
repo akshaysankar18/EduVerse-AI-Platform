@@ -1,0 +1,765 @@
+/* ============================================================
+   EDUVERSE AI — ONBOARDING STYLES
+   ============================================================ */
+
+/* Page container and general background matching the landing style */
+body.onboarding-page {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.onboarding-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.onboarding-bg .grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 100%);
+}
+
+.onboarding-bg .glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+}
+
+.onboarding-bg .glow-orb-1 {
+  top: -200px;
+  left: 20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(124,255,79,0.06) 0%, transparent 70%);
+}
+
+.onboarding-bg .glow-orb-2 {
+  bottom: -200px;
+  right: 15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 70%);
+}
+
+/* Header */
+.onboarding-header {
+  width: 100%;
+  max-width: 1100px;
+  padding: 24px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.onboarding-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.onboarding-logo .logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow: 0 0 16px rgba(124,255,79,0.3);
+}
+
+.onboarding-logo .logo-text .accent {
+  color: var(--primary);
+}
+
+.step-progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.step-counter {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted-light);
+}
+
+.progress-track {
+  width: 140px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--emerald));
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 0;
+}
+
+/* Layout containers */
+.onboarding-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  flex: 1;
+  position: relative;
+  z-index: 5;
+}
+
+.onboarding-card-wrapper {
+  width: 100%;
+  max-width: 720px;
+  padding: 16px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+/* Base onboarding step card using glassmorphism */
+.onboarding-step-card {
+  display: none;
+  background: rgba(20, 20, 20, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-radius: var(--radius-xl);
+  padding: 44px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transform: translateY(12px);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.onboarding-step-card.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* STEP 1: AUTHENTICATION */
+.auth-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  margin-bottom: 32px;
+}
+
+.auth-tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--muted-light);
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.auth-tab-btn.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.auth-form {
+  display: none;
+}
+
+.auth-form.active {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-header {
+  margin-bottom: 12px;
+}
+
+.form-header h2 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+}
+
+.form-header p {
+  font-size: 14px;
+  color: var(--text-60);
+  line-height: 1.6;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-80);
+}
+
+.input-group input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  transition: all var(--transition);
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(124, 255, 79, 0.02);
+  box-shadow: 0 0 16px rgba(124, 255, 79, 0.08);
+}
+
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-60);
+}
+
+.form-checkbox a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.form-checkbox input[type="checkbox"] {
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+.auth-divider::before, .auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.auth-divider span {
+  padding: 0 10px;
+}
+
+.social-auth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.social-btn {
+  justify-content: center;
+  height: 48px;
+}
+
+.forgot-link {
+  font-size: 12px;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* STEP HEADERS */
+.step-header {
+  margin-bottom: 36px;
+}
+
+.step-header h2 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.step-header p {
+  font-size: 15px;
+  color: var(--text-60);
+  line-height: 1.6;
+}
+
+/* OPTIONS GRID (Learner Type, Preferences) */
+.options-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.options-grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.options-grid.cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.option-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.option-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.option-card.selected {
+  background: rgba(124, 255, 79, 0.03);
+  border-color: var(--primary);
+  box-shadow: 0 0 24px rgba(124, 255, 79, 0.08);
+}
+
+.option-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-card.selected .option-icon {
+  background: rgba(124, 255, 79, 0.1);
+  color: var(--primary);
+}
+
+.option-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.option-card p {
+  font-size: 12px;
+  color: var(--muted-light);
+  line-height: 1.5;
+}
+
+/* Compact layout for preference styles */
+.option-card.compact {
+  padding: 16px;
+  align-items: center;
+  text-align: center;
+}
+
+.option-card.compact h4 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+.option-emoji {
+  font-size: 24px;
+}
+
+/* FOOTER NAVIGATION */
+.step-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* STEP 3 SPECIFICS: GOALS & SKILL LEVEL */
+.goals-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-light);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--text-80);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.tag-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.tag-chip.selected {
+  background: rgba(124, 255, 79, 0.1);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.level-selector-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.level-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.level-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.level-card.selected {
+  border-color: var(--primary);
+  background: rgba(124, 255, 79, 0.03);
+}
+
+.level-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
+.level-badge.beginner {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--info);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.level-badge.intermediate {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.level-badge.advanced {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--emerald);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.level-card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.level-card p {
+  font-size: 12px;
+  color: var(--muted-light);
+  line-height: 1.5;
+}
+
+/* STEP 4 SPECIFICS: TIME OPTIONS */
+.time-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.time-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.time-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.time-card.selected {
+  border-color: var(--primary);
+  background: rgba(124, 255, 79, 0.03);
+}
+
+.time-icon {
+  font-size: 24px;
+}
+
+.time-details h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.time-details p {
+  font-size: 12px;
+  color: var(--muted-light);
+}
+
+/* STEP 5 SPECIFICS: ANIMATED LOADER */
+.loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Giant Portal Spinner */
+.portal-spinner {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  animation: spinner-spin 3s linear infinite;
+}
+
+.ring-outer {
+  inset: 0;
+  border-top-color: var(--primary);
+  border-bottom-color: rgba(124,255,79,0.1);
+  animation-duration: 2s;
+}
+
+.ring-middle {
+  inset: 12px;
+  border-right-color: var(--emerald);
+  border-left-color: rgba(16,185,129,0.1);
+  animation-duration: 1.5s;
+  animation-direction: reverse;
+}
+
+.ring-inner {
+  inset: 24px;
+  border-top-color: #3b82f6;
+  border-bottom-color: rgba(59,130,246,0.1);
+  animation-duration: 1s;
+}
+
+.spinner-core {
+  font-size: 24px;
+  font-weight: 900;
+  color: #000;
+  background: var(--primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 24px rgba(124, 255, 79, 0.6);
+  z-index: 2;
+}
+
+@keyframes spinner-spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.loading-subtitle {
+  font-size: 14px;
+  color: var(--muted-light);
+  margin-bottom: 32px;
+}
+
+.loading-tasks {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.loading-task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.35;
+  transition: opacity 0.3s;
+}
+
+.loading-task-item.active {
+  opacity: 1;
+}
+
+.loading-task-item.done {
+  opacity: 0.8;
+}
+
+.status-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.loading-task-item.active .status-indicator {
+  border-color: var(--primary);
+}
+
+.loading-task-item.active .status-indicator::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+  animation: pulse-green 1.5s ease-in-out infinite;
+}
+
+.loading-task-item.done .status-indicator {
+  border-color: var(--emerald);
+  background: var(--emerald);
+}
+
+.loading-task-item.done .status-indicator::after {
+  content: '✓';
+  color: #000;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.task-text {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-80);
+}
+
+.loading-task-item.active .task-text {
+  color: var(--primary);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN FOR ONBOARDING
+   ============================================================ */
+@media (max-width: 768px) {
+  .onboarding-step-card {
+    padding: 28px 20px;
+  }
+  
+  .options-grid.cols-3,
+  .options-grid.cols-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .level-selector-row {
+    grid-template-columns: 1fr;
+  }
+
+  .time-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .options-grid.cols-3,
+  .options-grid.cols-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .social-auth-grid {
+    grid-template-columns: 1fr;
+  }
+}

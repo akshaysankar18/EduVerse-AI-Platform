@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduVerse AI — One Platform. Multiple AI Agents. Personalized Learning.</title>
+  <meta name="description" content="EduVerse AI is an Agentic AI learning platform that creates personalized learning journeys for students, professionals, and lifelong learners. Built for SDG 4 — Quality Education.">
+  <meta property="og:title" content="EduVerse AI — One Platform. Multiple AI Agents. Personalized Learning.">
+  <meta property="og:description" content="EduVerse AI creates personalized learning journeys using multiple AI agents working together.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body class="page-transition-ready">
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M9 2L11 7H16L12 10.5L13.5 16L9 13L4.5 16L6 10.5L2 7H7L9 2Z" fill="#000" stroke="#000" stroke-width="0.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span>EduVerse <span class="text-primary">AI</span></span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#ai-team" class="nav-link">AI Agents</a>
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#why-eduverse" class="nav-link">Why Us</a>
+      <a href="#sdg4" class="nav-link">Mission</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="onboarding.html?mode=login" class="btn btn-ghost btn-sm">Log in</a>
+      <a href="onboarding.html" class="btn btn-primary btn-sm nav-cta">
+        <span>Get Started</span>
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+          <path d="M1 6.5h11M7 2l4.5 4.5L7 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#ai-team" class="mobile-menu-link" onclick="closeMobileMenu()">AI Agents</a>
+  <a href="#features" class="mobile-menu-link" onclick="closeMobileMenu()">Features</a>
+  <a href="#why-eduverse" class="mobile-menu-link" onclick="closeMobileMenu()">Why Us</a>
+  <a href="#sdg4" class="mobile-menu-link" onclick="closeMobileMenu()">Mission</a>
+  <div class="mobile-menu-actions">
+    <a href="onboarding.html?mode=login" class="btn btn-outline w-full" style="justify-content:center">Log in</a>
+    <a href="onboarding.html" class="btn btn-primary w-full" style="justify-content:center"><span>Get Started</span></a>
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO — PREMIUM ANIMATED
+     ============================================================ -->
+<section class="hero" id="hero">
+  <!-- Layered animated background -->
+  <div class="hero-bg">
+    <div class="hero-mesh"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-orb hero-orb-4"></div>
+    <!-- Particle canvas -->
+    <canvas id="hero-particles" class="hero-particles"></canvas>
+  </div>
+
+  <div class="hero-content">
+    <!-- Badge -->
+    <div class="hero-badge" data-animate>
+      <span class="hero-badge-dot"></span>
+      Powered by Agentic AI · SDG 4 — Quality Education for All
+      <span class="hero-badge-new">New</span>
+    </div>
+
+    <!-- Main headline -->
+    <h1 class="hero-title" data-animate data-delay="0.1s">
+      One Platform.<br>
+      <span class="hero-title-line2">Multiple <span class="hero-highlight">AI Agents.</span></span><br>
+      <span class="hero-title-line3">Personalized <span class="hero-typewriter" id="typing-word">Learning.</span></span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="hero-subtitle" data-animate data-delay="0.2s">
+      EduVerse AI is an Agentic AI learning platform that creates personalized learning journeys for students, professionals, and lifelong learners.
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-ctas" data-animate data-delay="0.3s">
+      <a href="onboarding.html" class="btn btn-primary btn-lg cta-get-started hero-btn-primary">
+        <span>Get Started Free</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <button class="btn hero-btn-demo btn-lg" id="watch-demo-btn">
+        <span class="hero-demo-play">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M4 2.5l8 4.5-8 4.5V2.5z" fill="currentColor"/>
+          </svg>
+        </span>
+        Watch Demo
+      </button>
+    </div>
+
+
+  </div>
+
+  <!-- Floating AI agent illustrations -->
+  <div class="hero-floats" aria-hidden="true">
+    <div class="hero-float hero-float-1">
+      <div class="float-card glass-card">
+        <div class="float-card-icon" style="background:rgba(124,255,79,0.15);color:var(--primary)">🧠</div>
+        <div class="float-card-content">
+          <div class="float-card-title">AI Mentor</div>
+          <div class="float-card-sub">Answering your question…</div>
+        </div>
+        <div class="float-card-dot"></div>
+      </div>
+    </div>
+    <div class="hero-float hero-float-2">
+      <div class="float-card glass-card">
+        <div class="float-card-icon" style="background:rgba(16,185,129,0.15);color:var(--emerald)">📅</div>
+        <div class="float-card-content">
+          <div class="float-card-title">Study Planner</div>
+          <div class="float-card-sub">3 tasks scheduled today</div>
+        </div>
+        <div class="float-card-dot" style="background:var(--emerald)"></div>
+      </div>
+    </div>
+    <div class="hero-float hero-float-3">
+      <div class="float-card glass-card">
+        <div class="float-card-icon" style="background:rgba(168,85,247,0.15);color:#A855F7">⚡</div>
+        <div class="float-card-content">
+          <div class="float-card-title">Quiz Generator</div>
+          <div class="float-card-sub">Score: 88% ↑ 6%</div>
+        </div>
+        <div class="float-card-dot" style="background:#A855F7"></div>
+      </div>
+    </div>
+    <div class="hero-float hero-float-4">
+      <div class="float-card glass-card">
+        <div class="float-card-icon" style="background:rgba(245,158,11,0.15);color:#F59E0B">🎤</div>
+        <div class="float-card-content">
+          <div class="float-card-title">Mock Interview</div>
+          <div class="float-card-sub">Ready when you are</div>
+        </div>
+        <div class="float-card-dot" style="background:#F59E0B"></div>
+      </div>
+    </div>
+    <div class="hero-float hero-float-5">
+      <div class="float-card glass-card">
+        <div class="float-card-icon" style="background:rgba(59,130,246,0.15);color:#3B82F6">📊</div>
+        <div class="float-card-content">
+          <div class="float-card-title">Analytics</div>
+          <div class="float-card-sub">12-day streak 🔥</div>
+        </div>
+        <div class="float-card-dot" style="background:#3B82F6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator">
+    <div class="scroll-mouse">
+      <div class="scroll-wheel"></div>
+    </div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+
+
+<!-- ============================================================
+     OUR AI TEAM
+     ============================================================ -->
+<section class="section ai-team-section" id="ai-team">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="section-label">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="4"/><circle cx="6" cy="6" r="2" fill="#000"/></svg>
+        Meet Your AI Team
+      </div>
+      <h2 class="section-title">8 Specialized AI Agents<br>working for you</h2>
+      <p class="section-subtitle">Each agent is purpose-built for a specific part of your learning journey. Together, they form a complete agentic AI education system.</p>
+    </div>
+
+    <div class="ai-team-grid">
+
+      <a href="ai-mentor.html" class="ai-agent-card" data-animate data-delay="0.0s">
+        <div class="ai-agent-glow" style="--glow-color:rgba(124,255,79,0.15)"></div>
+        <div class="ai-agent-icon-wrap" style="background:rgba(124,255,79,0.1);border-color:rgba(124,255,79,0.2)">
+          <span class="ai-agent-emoji">🤖</span>
+        </div>
+        <div class="ai-agent-name">AI Mentor</div>
+        <div class="ai-agent-desc">Your 24/7 personal AI tutor. Ask anything, get adaptive explanations, worked examples, and step-by-step solutions on any subject.</div>
+        <div class="ai-agent-footer">
+          <span class="ai-agent-tag" style="color:var(--primary)">Conversational AI</span>
+          <div class="ai-agent-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="study-planner.html" class="ai-agent-card" data-animate data-delay="0.05s">
+        <div class="ai-agent-glow" style="--glow-color:rgba(16,185,129,0.15)"></div>
+        <div class="ai-agent-icon-wrap" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2)">
+          <span class="ai-agent-emoji">📅</span>
+        </div>
+        <div class="ai-agent-name">Study Planner</div>
+        <div class="ai-agent-desc">AI-generated daily, weekly, and revision schedules that adapt to your exam dates, weak topics, and performance in real time.</div>
+        <div class="ai-agent-footer">
+          <span class="ai-agent-tag" style="color:var(--emerald)">Smart Scheduling</span>
+          <div class="ai-agent-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="notes-assistant.html" class="ai-agent-card" data-animate data-delay="0.1s">
+        <div class="ai-agent-glow" style="--glow-color:rgba(59,130,246,0.15)"></div>
+        <div class="ai-agent-icon-wrap" style="background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.2)">
+          <span class="ai-agent-emoji">📝</span>
+        </div>
+        <div class="ai-agent-name">Notes Assistant</div>
+        <div class="ai-agent-desc">Upload any PDF or document. AI instantly generates summaries, flashcards, quizzes, and mind maps from your study material.</div>
+        <div class="ai-agent-footer">
+          <span class="ai-agent-tag" style="color:#3B82F6">PDF Intelligence</span>
+          <div class="ai-agent-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="quiz-center.html" class="ai-agent-card" data-animate data-delay="0.15s">
+        <div class="ai-agent-glow" style="--glow-color:rgba(168,85,247,0.15)"></div>
+        <div class="ai-agent-icon-wrap" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.2)">
+          <span class="ai-agent-emoji">🧠</span>
+        </div>
+        <div class="ai-agent-name">Quiz Generator</div>
+        <div class="ai-agent-desc">Generate unlimited MCQs on any topic at any difficulty level. Get instant explanations and track your accuracy trends.</div>
+        <div class="ai-agent-footer">
+          <span class="ai-agent-tag" style="color:#A855F7">Adaptive Testing</span>
+          <div class="ai-agent-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="learning-roadmap.html" class="ai-agent-card" data-animate data-delay="0.2s">
+        <div class="ai-agent-glow" style="--glow-color:rgba(245,158,11,0.15)"></div>
+        <div class="ai-agent-icon-wrap" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2)">
+          <span class="ai-agent-emoji">🛣️</span>
+        </div>
+        <div class="ai-agent-name">Learning Roadmap</div>
+        <div class="ai-agent-desc">Milestone-based learning paths built around your goal and timeline. Track phase-by-phase progress from beginner to mastery.</div>
+        <div class="ai-agent-footer">
+          <span class="ai-agent-tag" style="color:#F59E0B">Goal-Based Paths</span>
+          <div class="ai-agent-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="career-hub.html" class="ai-agent-card" data-animate data-delay="0.25s">
+        <div class="ai-agent-glow" style="--glow-color:rgba(239,68,68,0.15)"></div>
+        <div class="ai-agent-icon-wrap" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2)">
+          <span class="ai-agent-emoji">💼</span>
+        </div>
+        <div class="ai-agent-name">Career Hub</div>
+        <div class="ai-agent-desc">AI-powered career path analysis, skill gap detection, resume review, certification roadmap, and project suggestions.</div>
+        <div class="ai-agent-footer">
+          <span class="ai-agent-tag" style="color:#EF4444">Career Intelligence</span>
+          <div class="ai-agent-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="ai-mentor.html" class="ai-agent-card ai-agent-card-featured" data-animate data-delay="0.3s">
+        <div class="ai-agent-glow" style="--glow-color:rgba(6,182,212,0.2)"></div>
+        <div class="ai-agent-icon-wrap" style="background:rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.2)">
+          <span class="ai-agent-emoji">🎤</span>
+        </div>
+        <div class="ai-agent-name">Mock Interview</div>
+        <div class="ai-agent-badge">New</div>
+        <div class="ai-agent-desc">Practice real interviews with an AI interviewer. Get scored on communication, knowledge, and confidence. Prepare for any role.</div>
+        <div class="ai-agent-footer">
+          <span class="ai-agent-tag" style="color:#06B6D4">Interview Prep</span>
+          <div class="ai-agent-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="analytics.html" class="ai-agent-card" data-animate data-delay="0.35s">
+        <div class="ai-agent-glow" style="--glow-color:rgba(124,255,79,0.15)"></div>
+        <div class="ai-agent-icon-wrap" style="background:rgba(124,255,79,0.1);border-color:rgba(124,255,79,0.2)">
+          <span class="ai-agent-emoji">📊</span>
+        </div>
+        <div class="ai-agent-name">Analytics Agent</div>
+        <div class="ai-agent-desc">Deep learning insights — study hours, streaks, weak topics, performance radar, and personalized recommendations to improve.</div>
+        <div class="ai-agent-footer">
+          <span class="ai-agent-tag" style="color:var(--primary)">Performance AI</span>
+          <div class="ai-agent-arrow">→</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY EDUVERSE — COMPARISON
+     ============================================================ -->
+<section class="section why-section" id="why-eduverse" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="section-label">Why EduVerse AI</div>
+      <h2 class="section-title">Stop juggling multiple apps.<br>Everything in one place.</h2>
+      <p class="section-subtitle">Instead of switching between 5 different platforms to study, plan, quiz, and track — EduVerse AI combines all of it into one intelligent system.</p>
+    </div>
+
+    <div class="why-comparison" data-animate>
+      <!-- OLD WAY -->
+      <div class="why-col why-col-old">
+        <div class="why-col-header">
+          <div class="why-col-badge old">The Old Way 😩</div>
+          <div class="why-col-title">5 Apps. Zero Coordination.</div>
+        </div>
+        <div class="why-apps-grid">
+          <div class="why-app-item old-app">
+            <div class="why-app-icon" style="background:rgba(255,0,0,0.1)">▶️</div>
+            <div class="why-app-info">
+              <div class="why-app-name">YouTube</div>
+              <div class="why-app-desc">Watch lectures, get distracted by recommendations</div>
+            </div>
+            <div class="why-app-minus">✗</div>
+          </div>
+          <div class="why-app-item old-app">
+            <div class="why-app-icon" style="background:rgba(16,163,127,0.1)">💬</div>
+            <div class="why-app-info">
+              <div class="why-app-name">ChatGPT</div>
+              <div class="why-app-desc">Ask questions, no memory of your learning history</div>
+            </div>
+            <div class="why-app-minus">✗</div>
+          </div>
+          <div class="why-app-item old-app">
+            <div class="why-app-icon" style="background:rgba(66,133,244,0.1)">🔍</div>
+            <div class="why-app-info">
+              <div class="why-app-name">Google</div>
+              <div class="why-app-desc">Search endlessly, zero structured learning path</div>
+            </div>
+            <div class="why-app-minus">✗</div>
+          </div>
+          <div class="why-app-item old-app">
+            <div class="why-app-icon" style="background:rgba(0,86,210,0.1)">🎓</div>
+            <div class="why-app-info">
+              <div class="why-app-name">Coursera</div>
+              <div class="why-app-desc">Generic courses, no personalization, high cost</div>
+            </div>
+            <div class="why-app-minus">✗</div>
+          </div>
+          <div class="why-app-item old-app">
+            <div class="why-app-icon" style="background:rgba(255,255,255,0.05)">📓</div>
+            <div class="why-app-info">
+              <div class="why-app-name">Notion</div>
+              <div class="why-app-desc">Manual note-taking, no AI assistance or quizzing</div>
+            </div>
+            <div class="why-app-minus">✗</div>
+          </div>
+        </div>
+        <div class="why-col-footer old-footer">
+          <div class="why-col-result">Result: Overwhelmed, unfocused, slow progress</div>
+        </div>
+      </div>
+
+      <!-- VS divider -->
+      <div class="why-vs">
+        <div class="why-vs-inner">VS</div>
+      </div>
+
+      <!-- NEW WAY -->
+      <div class="why-col why-col-new">
+        <div class="why-col-header">
+          <div class="why-col-badge new">EduVerse AI ✨</div>
+          <div class="why-col-title">One Platform. Total Intelligence.</div>
+        </div>
+        <div class="why-apps-grid">
+          <div class="why-app-item new-app">
+            <div class="why-app-icon" style="background:rgba(124,255,79,0.1)">🧠</div>
+            <div class="why-app-info">
+              <div class="why-app-name">AI Mentor</div>
+              <div class="why-app-desc">Adaptive tutoring with memory of your full learning history</div>
+            </div>
+            <div class="why-app-check">✓</div>
+          </div>
+          <div class="why-app-item new-app">
+            <div class="why-app-icon" style="background:rgba(16,185,129,0.1)">📅</div>
+            <div class="why-app-info">
+              <div class="why-app-name">Smart Planner</div>
+              <div class="why-app-desc">Auto-generated schedules based on your goals & progress</div>
+            </div>
+            <div class="why-app-check">✓</div>
+          </div>
+          <div class="why-app-item new-app">
+            <div class="why-app-icon" style="background:rgba(168,85,247,0.1)">⚡</div>
+            <div class="why-app-info">
+              <div class="why-app-name">Quiz Generator</div>
+              <div class="why-app-desc">Unlimited AI quizzes with instant explanations per answer</div>
+            </div>
+            <div class="why-app-check">✓</div>
+          </div>
+          <div class="why-app-item new-app">
+            <div class="why-app-icon" style="background:rgba(59,130,246,0.1)">📝</div>
+            <div class="why-app-info">
+              <div class="why-app-name">Notes Assistant</div>
+              <div class="why-app-desc">Upload PDFs → AI generates summaries, flashcards, mind maps</div>
+            </div>
+            <div class="why-app-check">✓</div>
+          </div>
+          <div class="why-app-item new-app">
+            <div class="why-app-icon" style="background:rgba(245,158,11,0.1)">🎯</div>
+            <div class="why-app-info">
+              <div class="why-app-name">Career Hub + Analytics</div>
+              <div class="why-app-desc">AI career guidance, skill gap analysis, performance tracking</div>
+            </div>
+            <div class="why-app-check">✓</div>
+          </div>
+        </div>
+        <div class="why-col-footer new-footer">
+          <div class="why-col-result">Result: Focused, personalized, accelerated learning</div>
+          <a href="onboarding.html" class="btn btn-primary btn-sm" style="margin-top:16px"><span>Try It Free →</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURES
+     ============================================================ -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="section-label">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M6 1l1.5 3h3L8 6.5l1 3L6 8l-3 1.5 1-3L1.5 4h3z"/></svg>
+        Platform Features
+      </div>
+      <h2 class="section-title">Every tool you need to<br>learn smarter</h2>
+      <p class="section-subtitle">Multiple specialized AI agents work together to create your perfect learning experience — from study planning to career guidance.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card feature-card-lg" data-animate data-delay="0.1s">
+        <div class="feature-card-icon">🧠</div>
+        <div class="feature-card-title">AI Mentor</div>
+        <div class="feature-card-desc">Your personal AI tutor available 24/7. Ask anything about any subject, get detailed explanations, worked examples, and adaptive responses based on your learning style and current level.</div>
+        <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
+          <span class="badge badge-primary">Conversational AI</span>
+          <span class="badge badge-emerald">Adaptive Learning</span>
+          <span class="badge badge-gray">All Subjects</span>
+        </div>
+        <div class="feature-card-tag">Try Now →</div>
+      </div>
+      <div class="feature-card" data-animate data-delay="0.2s">
+        <div class="feature-card-icon">📅</div>
+        <div class="feature-card-title">Smart Study Planner</div>
+        <div class="feature-card-desc">AI-generated study schedules that adapt to your goals, deadlines, and performance. Never fall behind again.</div>
+        <div class="feature-card-tag">Plan Smarter →</div>
+      </div>
+      <div class="feature-card" data-animate data-delay="0.1s">
+        <div class="feature-card-icon">📝</div>
+        <div class="feature-card-title">Notes Assistant</div>
+        <div class="feature-card-desc">Upload any PDF, document, or notes. AI instantly summarizes, creates flashcards, quizzes, and mind maps.</div>
+        <div class="feature-card-tag">Upload &amp; Learn →</div>
+      </div>
+      <div class="feature-card" data-animate data-delay="0.2s">
+        <div class="feature-card-icon">⚡</div>
+        <div class="feature-card-title">Quiz Center</div>
+        <div class="feature-card-desc">Generate custom quizzes on any topic at any difficulty. Get instant explanations for every answer.</div>
+        <div class="feature-card-tag">Test Yourself →</div>
+      </div>
+      <div class="feature-card" data-animate data-delay="0.3s">
+        <div class="feature-card-icon">🎯</div>
+        <div class="feature-card-title">Career Hub</div>
+        <div class="feature-card-desc">AI-powered career path analysis, skill gap detection, resume review, and certification roadmap tailored to your goals.</div>
+        <div class="feature-card-tag">Plan Your Career →</div>
+      </div>
+      <div class="feature-card feature-card-lg" data-animate data-delay="0.1s">
+        <div class="feature-card-icon">📊</div>
+        <div class="feature-card-title">Learning Analytics</div>
+        <div class="feature-card-desc">Deep insights into your learning patterns. Track study hours, streaks, weak topics, and performance trends to continuously improve.</div>
+        <div style="margin-top:20px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <span style="font-size:13px;color:var(--muted-light)">Overall Progress</span>
+            <span style="font-size:13px;font-weight:600">78%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+        </div>
+        <div class="feature-card-tag">View Analytics →</div>
+      </div>
+      <div class="feature-card" data-animate data-delay="0.2s">
+        <div class="feature-card-icon">🗺️</div>
+        <div class="feature-card-title">Learning Roadmap</div>
+        <div class="feature-card-desc">Structured, milestone-based learning paths built around your specific goals and timeline.</div>
+        <div class="feature-card-tag">Start Journey →</div>
+      </div>
+      <div class="feature-card" data-animate data-delay="0.3s">
+        <div class="feature-card-icon">🎤</div>
+        <div class="feature-card-title">Mock Interview</div>
+        <div class="feature-card-desc">AI-powered interview practice sessions with real-time feedback on communication, knowledge, and confidence.</div>
+        <div class="feature-card-tag">Practice Now →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section class="section how-section" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Start learning in<br>under 2 minutes</h2>
+      <p class="section-subtitle">EduVerse AI gets you from zero to personalized learning faster than any other platform.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step" data-animate data-delay="0.1s">
+        <div class="how-step-num">1</div>
+        <div class="how-step-title">Create Your Profile</div>
+        <div class="how-step-desc">Tell EduVerse AI about your goals, current level, and subjects. Our AI builds a personalized learner profile.</div>
+      </div>
+      <div class="how-step" data-animate data-delay="0.2s">
+        <div class="how-step-num">2</div>
+        <div class="how-step-title">Meet Your AI Agents</div>
+        <div class="how-step-desc">Access your dedicated AI Mentor, Study Planner, Notes Assistant, Quiz Engine, and Career Advisor — all in one place.</div>
+      </div>
+      <div class="how-step" data-animate data-delay="0.3s">
+        <div class="how-step-num">3</div>
+        <div class="how-step-title">Achieve Your Goals</div>
+        <div class="how-step-desc">Track progress through visual analytics, earn achievements, and reach your learning milestones with AI guidance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================================
+     SDG 4 SECTION
+     ============================================================ -->
+<section class="section sdg-section" id="sdg4">
+  <div class="container">
+    <div class="sdg-inner" data-animate>
+      <div class="sdg-left">
+        <div class="sdg-badge-row">
+          <div class="sdg-un-badge">
+            <span style="font-size:20px">🌐</span>
+            <span>United Nations</span>
+          </div>
+          <div class="sdg-goal-badge">SDG Goal 4</div>
+        </div>
+        <h2 class="sdg-title">Supporting United Nations<br><span class="text-gradient">Sustainable Development</span><br>Goal 4</h2>
+        <p class="sdg-desc">EduVerse AI is built around the mission of providing <strong>inclusive, equitable, and quality education</strong> for all. By harnessing Agentic AI, we make personalized, world-class learning accessible to every student — regardless of location, background, or resources.</p>
+        <div class="sdg-pillars">
+          <div class="sdg-pillar">
+            <div class="sdg-pillar-icon">✦</div>
+            <div>
+              <div class="sdg-pillar-title">Inclusive Education</div>
+              <div class="sdg-pillar-desc">Accessible learning for every student, everywhere</div>
+            </div>
+          </div>
+          <div class="sdg-pillar">
+            <div class="sdg-pillar-icon">✦</div>
+            <div>
+              <div class="sdg-pillar-title">Personalized Learning</div>
+              <div class="sdg-pillar-desc">AI-adapted paths that match each learner's pace</div>
+            </div>
+          </div>
+          <div class="sdg-pillar">
+            <div class="sdg-pillar-icon">✦</div>
+            <div>
+              <div class="sdg-pillar-title">Lifelong Learning</div>
+              <div class="sdg-pillar-desc">From school to career — growth never stops</div>
+            </div>
+          </div>
+          <div class="sdg-pillar">
+            <div class="sdg-pillar-icon">✦</div>
+            <div>
+              <div class="sdg-pillar-title">Quality for All</div>
+              <div class="sdg-pillar-desc">World-class education at zero cost to start</div>
+            </div>
+          </div>
+        </div>
+        <a href="dashboard.html" class="btn btn-primary btn-lg" style="margin-top:32px;width:fit-content"><span>Join the Mission</span></a>
+      </div>
+      <div class="sdg-right" aria-hidden="true">
+        <div class="sdg-illustration">
+          <div class="sdg-globe-ring sdg-ring-1"></div>
+          <div class="sdg-globe-ring sdg-ring-2"></div>
+          <div class="sdg-globe-ring sdg-ring-3"></div>
+          <div class="sdg-center-icon">🌍</div>
+          <div class="sdg-float-item sdg-fi-1">📚</div>
+          <div class="sdg-float-item sdg-fi-2">🎓</div>
+          <div class="sdg-float-item sdg-fi-3">🤖</div>
+          <div class="sdg-float-item sdg-fi-4">✨</div>
+          <div class="sdg-float-item sdg-fi-5">🌱</div>
+          <div class="sdg-float-item sdg-fi-6">💡</div>
+          <!-- Orbiting stat cards -->
+          <div class="sdg-orbit-card sdg-oc-1 glass-card">
+            <div style="font-size:18px;font-weight:800;color:var(--primary)">100K+</div>
+            <div style="font-size:11px;color:var(--muted-light)">Students</div>
+          </div>
+          <div class="sdg-orbit-card sdg-oc-2 glass-card">
+            <div style="font-size:18px;font-weight:800;color:var(--emerald)">8</div>
+            <div style="font-size:11px;color:var(--muted-light)">AI Agents</div>
+          </div>
+          <div class="sdg-orbit-card sdg-oc-3 glass-card">
+            <div style="font-size:18px;font-weight:800;color:#A855F7">95%</div>
+            <div style="font-size:11px;color:var(--muted-light)">Success Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="cta-section">
+  <div class="cta-card" data-animate>
+    <div class="cta-card-bg"></div>
+    <div class="section-label" style="margin-bottom:24px">Ready to Start?</div>
+    <h2 class="cta-title">Begin your AI learning<br><span class="text-gradient">journey today</span></h2>
+    <p class="cta-desc">Join 100,000+ learners who are already achieving their goals with EduVerse AI. Free to start, no credit card required.</p>
+    <div class="cta-actions">
+      <a href="onboarding.html" class="btn btn-primary btn-lg cta-get-started">
+        <span>Get Started Free</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#ai-team" class="btn btn-outline btn-lg">Meet the AI Agents</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER — UPGRADED
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="font-size:16px">
+          <div class="nav-logo-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L11 7H16L12 10.5L13.5 16L9 13L4.5 16L6 10.5L2 7H7L9 2Z" fill="#000" stroke="#000" stroke-width="0.5" stroke-linejoin="round"/></svg>
+          </div>
+          <span>EduVerse <span class="text-primary">AI</span></span>
+        </div>
+        <p>An agentic AI learning platform delivering personalized education for every learner. Built for SDG 4 — Quality Education for All.</p>
+        <div class="footer-sdg" style="margin-top:16px">
+          <div class="footer-sdg-badge">SDG 4</div>
+          Quality Education for All
+        </div>
+        <!-- Social links -->
+        <div class="footer-socials">
+          <a href="https://github.com" target="_blank" rel="noopener" class="footer-social-btn" aria-label="GitHub">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Twitter/X">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Platform</div>
+        <div class="footer-links">
+          <a href="dashboard.html" class="footer-link">Dashboard</a>
+          <a href="ai-mentor.html" class="footer-link">AI Mentor</a>
+          <a href="study-planner.html" class="footer-link">Study Planner</a>
+          <a href="notes-assistant.html" class="footer-link">Notes Assistant</a>
+          <a href="quiz-center.html" class="footer-link">Quiz Center</a>
+          <a href="career-hub.html" class="footer-link">Career Hub</a>
+          <a href="analytics.html" class="footer-link">Analytics</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="#about" class="footer-link">About Us</a>
+          <a href="#sdg4" class="footer-link">Our Mission</a>
+          <a href="#" class="footer-link">Blog</a>
+          <a href="#" class="footer-link">Careers</a>
+          <a href="mailto:hello@eduverse.ai" class="footer-link">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+          <a href="#" class="footer-link">Cookie Policy</a>
+          <a href="#" class="footer-link">Accessibility</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 EduVerse AI. All rights reserved.</p>
+      <div style="display:flex;align-items:center;gap:16px">
+        <div class="footer-sdg">
+          <div class="footer-sdg-badge">SDG 4</div>
+          Quality Education
+        </div>
+        <span style="color:var(--border)">·</span>
+        <p style="color:var(--muted);font-size:13px">Made with ❤️ for every learner</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Page transition overlay -->
+<div class="page-transition-overlay" id="page-overlay"></div>
+
+<script src="js/global.js"></script>
+<script src="js/landing.js"></script>
+</body>
+</html>
