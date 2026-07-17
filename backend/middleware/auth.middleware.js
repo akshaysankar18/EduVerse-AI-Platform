@@ -52,7 +52,7 @@ const authenticate = async (req, res, next) => {
 
     const token = authHeader.split(' ')[1];
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'eduverse_secure_default_jwt_secret_key_32_chars_long');
     req.user = decoded; // { uid, email, role, iat, exp }
     next();
   } catch (error) {
@@ -117,7 +117,7 @@ const optionalAuth = (req, _res, next) => {
     const authHeader = req.headers.authorization;
     if (authHeader && authHeader.startsWith('Bearer ')) {
       const token  = authHeader.split(' ')[1];
-      req.user     = jwt.verify(token, process.env.JWT_SECRET);
+      req.user     = jwt.verify(token, process.env.JWT_SECRET || 'eduverse_secure_default_jwt_secret_key_32_chars_long');
     }
   } catch {
     req.user = null;

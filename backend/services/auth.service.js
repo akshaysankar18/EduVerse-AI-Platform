@@ -8,9 +8,9 @@ const jwt  = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const logger = require('../utils/logger');
 
-const JWT_SECRET          = () => process.env.JWT_SECRET;
+const JWT_SECRET          = () => process.env.JWT_SECRET || 'eduverse_secure_default_jwt_secret_key_32_chars_long';
 const JWT_EXPIRES_IN      = () => process.env.JWT_EXPIRES_IN      || '7d';
-const JWT_REFRESH_SECRET  = () => process.env.JWT_REFRESH_SECRET  || process.env.JWT_SECRET;
+const JWT_REFRESH_SECRET  = () => process.env.JWT_REFRESH_SECRET  || process.env.JWT_SECRET || 'eduverse_secure_default_refresh_secret_key_32_chars_long';
 const JWT_REFRESH_EXPIRES = () => process.env.JWT_REFRESH_EXPIRES_IN || '30d';
 
 /**
