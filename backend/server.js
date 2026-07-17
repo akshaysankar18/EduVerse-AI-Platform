@@ -33,6 +33,7 @@ const personalizationRoutes = require('./routes/personalization.routes');
 
 // ── App Init ─────────────────────────────────────────────────
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 5000;
 
 // ── Security Middleware ───────────────────────────────────────
@@ -44,7 +45,7 @@ app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (e.g., mobile apps, curl, Postman)
     if (!origin) return callback(null, true);
-    
+
     // In development mode, allow localhost, 127.0.0.1, and null (file:///)
     const isDev = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
     if (isDev) {
