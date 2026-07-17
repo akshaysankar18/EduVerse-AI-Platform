@@ -96,35 +96,119 @@ function switchAuthTab(type) {
 }
 
 // Handle login / signup submission
-function handleAuthSubmit(event, type) {
+async function handleAuthSubmit(event, type) {
   event.preventDefault();
   
-  if (type === 'signup') {
-    const name = document.getElementById('signup-name').value.trim();
-    const email = document.getElementById('signup-email').value.trim();
-    localStorage.setItem('userName', name);
-    localStorage.setItem('userEmail', email);
-    
-    showToast(`Welcome, ${name}! Setting up your secure workspace...`, 'success');
-    
-    // Transition to Step 2
-    setTimeout(() => {
-      nextStep();
-    }, 1000);
-  } else {
-    const email = document.getElementById('login-email').value.trim();
-    // Derive name from email as fallback
-    const derivedName = email.split('@')[0];
-    const formattedName = derivedName.charAt(0).toUpperCase() + derivedName.slice(1);
-    localStorage.setItem('userEmail', email);
-    localStorage.setItem('userName', formattedName);
-    
-    showToast(`Welcome back! Loading your profile...`, 'success');
-    
-    // Returning users go straight to Dashboard
-    setTimeout(() => {
-      window.location.href = 'dashboard.html';
-    }, 1000);
+  const form = event.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalBtnHTML = submitBtn.innerHTML;
+  
+  // Disable button and show loading spinner
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = `
+    <span style="display:flex;align-items:center;justify-content:center;gap:6px">
+      <span class="auth-spinner-icon" style="width:12px;height:12px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;display:inline-block"></span>
+      Authenticating...
+    </span>
+  `;
+
+  try {
+    if (type === 'signup') {
+      const name = document.getElementById('signup-name').value.trim();
+      const email = document.getElementById('signup-email').value.trim();
+      const password = document.getElementById('signup-password').value;
+
+      if (!name || !email || !password) {
+        throw new Error('All fields are required.');
+      }
+      if (password.length < 6) {
+        throw new Error('Password must be at least 6 characters.');
+      }
+
+      // Call backend signup API
+      const res = await window.EduVerseAPI.signup(email, password, name);
+      if (!res || !res.success || !res.data) {
+        throw new Error(res?.message || 'Registration failed.');
+      }
+
+      const { accessToken, refreshToken, user } = res.data;
+      localStorage.setItem('token', accessToken);
+      if (refreshToken) {
+        localStorage.setItem('refreshToken', refreshToken);
+      }
+      localStorage.setItem('userName', user.displayName || name);
+      localStorage.setItem('userEmail', user.email || email);
+
+      showToast(`Welcome, ${user.displayName || name}! Setting up your secure workspace...`, 'success');
+      
+      // Transition to Step 2
+      setTimeout(() => {
+        nextStep();
+      }, 1000);
+
+    } else {
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value;
+
+      if (!email || !password) {
+        throw new Error('All fields are required.');
+      }
+
+      // 1. Authenticate with Firebase REST API to retrieve ID Token
+      const firebaseApiKey = 'AIzaSyBXKhl36V9tBLaqwnc9OEUdI6ynFSjl64s';
+      const firebaseLoginUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${firebaseApiKey}`;
+      
+      const fbResponse = await fetch(firebaseLoginUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          password,
+          returnSecureToken: true
+        })
+      });
+
+      const fbData = await fbResponse.json();
+      if (!fbResponse.ok) {
+        let errorMsg = fbData.error?.message || 'Firebase login failed.';
+        if (errorMsg === 'EMAIL_NOT_FOUND' || errorMsg === 'INVALID_PASSWORD' || errorMsg === 'INVALID_LOGIN_CREDENTIALS') {
+          errorMsg = 'Incorrect email or password.';
+        } else if (errorMsg === 'USER_DISABLED') {
+          errorMsg = 'This user account has been disabled.';
+        } else if (errorMsg === 'TOO_MANY_ATTEMPTS_TRY_LATER') {
+          errorMsg = 'Too many login attempts. Please try again later.';
+        }
+        throw new Error(errorMsg);
+      }
+
+      const firebaseToken = fbData.idToken;
+
+      // 2. Exchange Firebase Token for backend JWT tokens
+      const res = await window.EduVerseAPI.login(firebaseToken);
+      if (!res || !res.success || !res.data) {
+        throw new Error(res?.message || 'Backend authentication failed.');
+      }
+
+      const { accessToken, refreshToken, user } = res.data;
+      localStorage.setItem('token', accessToken);
+      if (refreshToken) {
+        localStorage.setItem('refreshToken', refreshToken);
+      }
+      localStorage.setItem('userName', user.displayName || email.split('@')[0]);
+      localStorage.setItem('userEmail', user.email || email);
+
+      showToast(`Welcome back, ${user.displayName || email.split('@')[0]}! Loading your profile...`, 'success');
+      
+      // Redirect straight to Dashboard
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 1000);
+    }
+  } catch (err) {
+    console.error('[Authentication Error]', err);
+    showToast(err.message || 'Authentication failed. Please try again.', 'error');
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnHTML;
   }
 }
 

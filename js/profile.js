@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (typeof window.EduVerseAPI === 'undefined') return;
 
       const [profRes, analyticsRes, tasksRes, attemptsRes, notesRes, mentorRes] = await Promise.all([
-        window.EduVerseAPI.getProfile(),
-        window.EduVerseAPI.getAnalytics(),
-        window.EduVerseAPI.getTasks(),
-        window.EduVerseAPI.getAttempts(),
-        window.EduVerseAPI.getNotes().catch(() => ({ success: true, data: [] })),
-        window.EduVerseAPI.getMentorHistory().catch(() => ({ success: true, data: [] }))
+        window.EduVerseAPI.getProfile().catch(err => { console.warn('Profile load failed:', err); return null; }),
+        window.EduVerseAPI.getAnalytics().catch(err => { console.warn('Analytics load failed:', err); return null; }),
+        window.EduVerseAPI.getTasks().catch(err => { console.warn('Tasks load failed:', err); return null; }),
+        window.EduVerseAPI.getAttempts().catch(err => { console.warn('Attempts load failed:', err); return null; }),
+        window.EduVerseAPI.getNotes().catch(err => { console.warn('Notes load failed:', err); return { success: true, data: [] }; }),
+        window.EduVerseAPI.getMentorHistory().catch(err => { console.warn('Mentor history load failed:', err); return { success: true, data: [] }; })
       ]);
 
       if (profRes && profRes.success && profRes.data) {

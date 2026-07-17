@@ -820,9 +820,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const uploadUrl = (window.API_BASE_URL || 'http://127.0.0.1:5000/api') + '/notes/upload';
       xhr.open('POST', uploadUrl);
 
-      // Inject custom session headers in dev mode
+      // Inject custom session headers and JWT Authorization token
       const email = localStorage.getItem('userEmail');
       const name = localStorage.getItem('userName');
+      const token = localStorage.getItem('token');
+      if (token) xhr.setRequestHeader('Authorization', `Bearer ${token}`);
       if (email) xhr.setRequestHeader('X-User-Email', email);
       if (name) xhr.setRequestHeader('X-User-Name', name);
 

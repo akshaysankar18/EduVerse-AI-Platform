@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      // 1. Fetch general analytics summary, attempts, and tasks in parallel with error boundaries
+      // 1. Fetch general analytics summary, attempts, and tasks in parallel
       const [analyticsRes, attemptsRes, tasksRes] = await Promise.all([
-        window.EduVerseAPI.getAnalytics().catch(err => { console.warn('Analytics failed:', err); return null; }),
-        window.EduVerseAPI.getAttempts().catch(err => { console.warn('Attempts failed:', err); return null; }),
-        window.EduVerseAPI.getTasks().catch(err => { console.warn('Tasks failed:', err); return null; })
+        window.EduVerseAPI.getAnalytics(),
+        window.EduVerseAPI.getAttempts(),
+        window.EduVerseAPI.getTasks()
       ]);
 
       if (!analyticsRes || !analyticsRes.success || !analyticsRes.data) return;
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const dailyMap = {};
     const now = new Date();
-    
+
     // Initialize last 7 days
     for (let i = 0; i < 7; i++) {
       const d = new Date();
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const maxHours = Math.max(...hours, 4);
-    
+
     // Generate SVG Bars
     const barsSvg = hours.map((h, idx) => {
       const barHeight = Math.round((h / maxHours) * 120);
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (true) {
       const subjectSums = {};
       const subjectCounts = {};
-      
+
       attempts.forEach(att => {
         if (att.subject) {
           const matchedSub = subjects.find(s => s.toLowerCase().startsWith(att.subject.toLowerCase()) || att.subject.toLowerCase().startsWith(s.toLowerCase()));

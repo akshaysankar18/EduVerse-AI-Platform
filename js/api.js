@@ -337,10 +337,10 @@ window.EduVerseAPI = {
   },
 
   // ---- Learning Resources ----
-  searchResources(query, type = 'all') {
+  searchResources(topic, subject, level = 'intermediate') {
     return request('/resources/search', {
       method: 'POST',
-      body: JSON.stringify({ query, type }),
+      body: JSON.stringify({ topic, subject, level }),
     });
   },
 
@@ -373,5 +373,20 @@ window.EduVerseAPI = {
   // ---- Recommendations ----
   getRecommendations() {
     return request('/personalization/recommendations');
+  },
+
+  // ---- Authentication ----
+  signup(email, password, displayName) {
+    return request('/auth/signup', {
+      method: 'POST',
+      body: JSON.stringify({ email, password, displayName }),
+    });
+  },
+
+  login(firebaseToken) {
+    return request('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ firebaseToken }),
+    });
   },
 };

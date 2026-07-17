@@ -482,118 +482,120 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof window.EduVerseAPI === 'undefined') return;
 
     try {
-      // Fetch APIs in parallel
-      const [analyticsRes, progressRes, recommendationsRes] = await Promise.all([
-        window.EduVerseAPI.getAnalytics(),
-        window.EduVerseAPI.getProgress(),
-        window.EduVerseAPI.getRecommendations().catch(() => null)
+      // Fetch APIs in parallel with individual error boundaries
+      const [analyticsRes, progressRes, recommendationsRes, tasksRes] = await Promise.all([
+        window.EduVerseAPI.getAnalytics().catch(err => { console.warn('[Dashboard] Analytics load failed:', err); return null; }),
+        window.EduVerseAPI.getProgress().catch(err => { console.warn('[Dashboard] Progress load failed:', err); return null; }),
+        window.EduVerseAPI.getRecommendations().catch(err => { console.warn('[Dashboard] Recommendations load failed:', err); return null; }),
+        window.EduVerseAPI.getTasks().catch(err => { console.warn('[Dashboard] Tasks load failed:', err); return null; })
       ]);
 
-      if (!analyticsRes || !analyticsRes.success || !analyticsRes.data) return;
-
-      const data = analyticsRes.data;
+      // Fallback user display details
+      const user = analyticsRes?.data?.user;
+      const displayName = user?.displayName || localStorage.getItem('userName') || 'Learner';
+      const userGoal = user?.profile?.goal || localStorage.getItem('userGoal') || 'Ready to learn something amazing today?';
 
       // Update welcome banner (if present)
       const welcomeUserLabel = document.getElementById('welcome-user-label');
-      if (welcomeUserLabel && data.user) {
-        welcomeUserLabel.textContent = `Good evening, ${data.user.displayName || 'Learner'} 👋`;
+      if (welcomeUserLabel) {
+        welcomeUserLabel.textContent = `Good evening, ${displayName} 👋`;
       }
 
       const welcomeUserGoal = document.getElementById('welcome-user-goal');
-      if (welcomeUserGoal && data.user && data.user.profile && data.user.profile.goal) {
-        welcomeUserGoal.textContent = `Goal: ${data.user.profile.goal}`;
+      if (welcomeUserGoal) {
+        welcomeUserGoal.textContent = userGoal.startsWith('Ready') ? userGoal : `Goal: ${userGoal}`;
       }
 
       const welcomeStreakBadge = document.getElementById('welcome-streak-badge');
-      if (welcomeStreakBadge && data.user) {
-        const streakVal = data.user.streak || 0;
+      if (welcomeStreakBadge) {
+        const streakVal = user?.streak || 0;
         welcomeStreakBadge.innerHTML = `<span class="glow-dot" style="width:6px;height:6px"></span> ${streakVal} Day Streak 🔥`;
       }
 
+      // Populate tasks completion rate and remaining counts from backend
+      const tasksData = analyticsRes?.data?.tasks;
       const welcomeGoalBadge = document.getElementById('welcome-goal-badge');
-      if (welcomeGoalBadge && data.tasks) {
-        welcomeGoalBadge.textContent = `${data.tasks.completionRate || 0}% Goal`;
+      if (welcomeGoalBadge) {
+        welcomeGoalBadge.textContent = `${tasksData?.completionRate || 0}% Goal`;
       }
 
       const welcomeTasksBadge = document.getElementById('welcome-tasks-remaining');
-      if (welcomeTasksBadge && data.tasks) {
-        welcomeTasksBadge.textContent = `${data.tasks.pending || 0} Tasks Remaining`;
+      if (welcomeTasksBadge) {
+        welcomeTasksBadge.textContent = `${tasksData?.pending || 0} Tasks Remaining`;
       }
 
       // Update stats cards
       const statStreak = document.getElementById('dashboard-stat-streak');
-      if (statStreak && data.user) {
-        const streakVal = data.user.streak || 0;
+      if (statStreak) {
+        const streakVal = user?.streak || 0;
         statStreak.textContent = streakVal > 0 ? `${streakVal} Days` : '0 Days';
       }
 
       const statHours = document.getElementById('dashboard-stat-hours');
       const statGoals = document.getElementById('dashboard-stat-goals');
-      if (statGoals && data.tasks) {
-        statGoals.textContent = data.tasks.completed > 0 ? `${data.tasks.completed} / ${data.tasks.total}` : 'No goals completed';
+      if (statGoals) {
+        statGoals.textContent = (tasksData?.completed > 0) ? `${tasksData.completed} / ${tasksData.total}` : 'No goals completed';
       }
 
+      const quizzesData = analyticsRes?.data?.quizzes;
       const statAccuracy = document.getElementById('dashboard-stat-accuracy');
-      if (statAccuracy && data.quizzes) {
-        statAccuracy.textContent = data.quizzes.total > 0 ? `${data.quizzes.avgScore || 0}%` : 'No quizzes taken yet';
+      if (statAccuracy) {
+        statAccuracy.textContent = (quizzesData?.total > 0) ? `${quizzesData.avgScore || 0}%` : 'No quizzes taken yet';
       }
 
-      // Populate dashboard tasks list (if present)
+      // Populate dashboard tasks list
       const dbTasksList = document.getElementById('dashboard-tasks-list');
       let allTasks = [];
-      if (dbTasksList) {
-        const tasksRes = await window.EduVerseAPI.getTasks();
-        if (tasksRes && tasksRes.success && tasksRes.data) {
-          allTasks = tasksRes.data;
+      if (dbTasksList && tasksRes && tasksRes.success && tasksRes.data) {
+        allTasks = tasksRes.data;
 
-          // Calculate study hours from tasks list
-          let totalPlannedHours = 0;
-          let completedHours = 0;
-          allTasks.forEach(t => {
-            const h = parseFloat(t.estimatedHours) || 1.0;
-            totalPlannedHours += h;
-            if (t.status === 'completed') {
-              completedHours += h;
-            }
-          });
-
-          // Render hours on welcome banner
-          const welcomeHoursStudied = document.getElementById('dashboard-hours-studied');
-          const welcomeHoursLabel = document.getElementById('dashboard-hours-label');
-          const welcomeHoursProgress = document.getElementById('dashboard-hours-progress');
-
-          const goalHours = totalPlannedHours > 0 ? totalPlannedHours : 3.0;
-          if (welcomeHoursStudied) welcomeHoursStudied.textContent = `${completedHours.toFixed(1)} hrs`;
-          if (welcomeHoursLabel) welcomeHoursLabel.textContent = `of ${goalHours.toFixed(1)} hrs studied`;
-          if (welcomeHoursProgress) {
-            const pct = goalHours > 0 ? Math.min(Math.round((completedHours / goalHours) * 100), 100) : 0;
-            welcomeHoursProgress.style.width = `${pct}%`;
+        // Calculate study hours from tasks list
+        let totalPlannedHours = 0;
+        let completedHours = 0;
+        allTasks.forEach(t => {
+          const h = parseFloat(t.estimatedHours) || 1.0;
+          totalPlannedHours += h;
+          if (t.status === 'completed') {
+            completedHours += h;
           }
+        });
 
-          // Show active study hours on stat card
-          if (statHours) {
-            statHours.textContent = completedHours > 0 ? `${completedHours.toFixed(1)} hrs` : '0 hrs';
-          }
+        // Render hours on welcome banner
+        const welcomeHoursStudied = document.getElementById('dashboard-hours-studied');
+        const welcomeHoursLabel = document.getElementById('dashboard-hours-label');
+        const welcomeHoursProgress = document.getElementById('dashboard-hours-progress');
 
-          const tasks = allTasks.slice(0, 5);
-          if (tasks.length === 0) {
-            dbTasksList.innerHTML = `
-              <div style="text-align:center;padding:24px 12px;color:var(--muted);font-size:12px">
-                <div>No tasks today</div>
-                <a href="study-planner.html" class="btn btn-primary btn-sm" style="display:inline-flex;margin-top:12px"><span>Go to Planner</span></a>
+        const goalHours = totalPlannedHours > 0 ? totalPlannedHours : 3.0;
+        if (welcomeHoursStudied) welcomeHoursStudied.textContent = `${completedHours.toFixed(1)} hrs`;
+        if (welcomeHoursLabel) welcomeHoursLabel.textContent = `of ${goalHours.toFixed(1)} hrs studied`;
+        if (welcomeHoursProgress) {
+          const pct = goalHours > 0 ? Math.min(Math.round((completedHours / goalHours) * 100), 100) : 0;
+          welcomeHoursProgress.style.width = `${pct}%`;
+        }
+
+        // Show active study hours on stat card
+        if (statHours) {
+          statHours.textContent = completedHours > 0 ? `${completedHours.toFixed(1)} hrs` : '0 hrs';
+        }
+
+        const tasks = allTasks.slice(0, 5);
+        if (tasks.length === 0) {
+          dbTasksList.innerHTML = `
+            <div style="text-align:center;padding:24px 12px;color:var(--muted);font-size:12px">
+              <div>No tasks today</div>
+              <a href="study-planner.html" class="btn btn-primary btn-sm" style="display:inline-flex;margin-top:12px"><span>Go to Planner</span></a>
+            </div>
+          `;
+        } else {
+          dbTasksList.innerHTML = tasks.map(t => `
+            <div class="task-item">
+              <div class="task-checkbox ${t.status === 'completed' ? 'checked' : ''}" style="pointer-events:none">
+                ${t.status === 'completed' ? '<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}
               </div>
-            `;
-          } else {
-            dbTasksList.innerHTML = tasks.map(t => `
-              <div class="task-item">
-                <div class="task-checkbox ${t.status === 'completed' ? 'checked' : ''}" style="pointer-events:none">
-                  ${t.status === 'completed' ? '<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}
-                </div>
-                <div class="task-text ${t.status === 'completed' ? 'done' : ''}">${escapeHTML(t.title)}</div>
-                <span class="task-meta badge ${t.status === 'completed' ? 'badge-primary' : 'badge-warning'}" style="font-size:10px">${t.status}</span>
-              </div>
-            `).join('') + `<div style="margin-top:16px"><a href="study-planner.html" class="btn btn-outline btn-sm w-full" style="justify-content:center">+ Add Task</a></div>`;
-          }
+              <div class="task-text ${t.status === 'completed' ? 'done' : ''}">${escapeHTML(t.title)}</div>
+              <span class="task-meta badge ${t.status === 'completed' ? 'badge-primary' : 'badge-warning'}" style="font-size:10px">${t.status}</span>
+            </div>
+          `).join('') + `<div style="margin-top:16px"><a href="study-planner.html" class="btn btn-outline btn-sm w-full" style="justify-content:center">+ Add Task</a></div>`;
         }
       }
 

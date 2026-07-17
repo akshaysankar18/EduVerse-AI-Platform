@@ -763,3 +763,11 @@ body.onboarding-page {
     grid-template-columns: 1fr;
   }
 }
+
+/* Authentication Loading Spinner */
+@keyframes auth-spin {
+  to { transform: rotate(360deg); }
+}
+.auth-spinner-icon {
+  animation: auth-spin 0.8s linear infinite;
+}
