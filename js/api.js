@@ -92,6 +92,10 @@ async function request(path, options = {}) {
       }
       
       const errorData = await response.json().catch(() => ({}));
+      if (errorData.errors && Array.isArray(errorData.errors)) {
+        const customMsg = errorData.errors.map(e => e.message).join('. ');
+        throw new Error(customMsg || errorData.message || `HTTP error ${response.status}`);
+      }
       throw new Error(errorData.message || `HTTP error ${response.status}`);
     }
 

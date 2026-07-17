@@ -149,11 +149,19 @@ function animateCounter(el, target, duration = 2000) {
 
 // ---- Init all ----
 document.addEventListener('DOMContentLoaded', () => {
-  // Passive Auth Session Validation
-  const isAuthPage = !window.location.pathname.endsWith('index.html') &&
-                     !window.location.pathname.endsWith('onboarding.html') &&
-                     window.location.pathname !== '/' &&
-                     window.location.pathname !== '';
+  // Passive Auth Session Validation (whitelisted list of protected pages to prevent Netlify pretty-URL redirect loops)
+  const protectedPages = [
+    'dashboard',
+    'ai-mentor',
+    'notes-assistant',
+    'quiz-center',
+    'learning-roadmap',
+    'learning-resources',
+    'career-hub',
+    'analytics',
+    'profile'
+  ];
+  const isAuthPage = protectedPages.some(page => window.location.pathname.includes(page));
   if (isAuthPage) {
     const email = localStorage.getItem('userEmail');
     const token = localStorage.getItem('token');

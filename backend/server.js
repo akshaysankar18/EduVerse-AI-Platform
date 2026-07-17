@@ -58,7 +58,12 @@ app.use(cors({
       }
     }
 
-    if (allowedOrigins.includes(origin)) return callback(null, true);
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.netlify.app')
+    ) {
+      return callback(null, true);
+    }
     callback(new Error(`CORS policy: Origin ${origin} not allowed`));
   },
   credentials: true,

@@ -121,8 +121,11 @@ async function handleAuthSubmit(event, type) {
       if (!name || !email || !password) {
         throw new Error('All fields are required.');
       }
-      if (password.length < 6) {
-        throw new Error('Password must be at least 6 characters.');
+      if (password.length < 8) {
+        throw new Error('Password must be at least 8 characters.');
+      }
+      if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(password)) {
+        throw new Error('Password must contain at least one uppercase letter, one lowercase letter, and one number.');
       }
 
       // Call backend signup API
