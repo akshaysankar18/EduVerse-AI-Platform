@@ -97,8 +97,6 @@ const queryDocs = async (
                          (error.message && error.message.includes('FAILED_PRECONDITION'));
 
     if (isIndexError) {
-      logger.warn(`[Firestore] Index missing for query on "${collection}" (order by "${orderBy}"). Falling back to in-memory sorting.`);
-      
       const snap = await query.get();
       let results = snap.docs.map(d => ({ id: d.id, ...d.data() }));
 
