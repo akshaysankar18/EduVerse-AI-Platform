@@ -109,6 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
           });
         }
+      } else {
+        const historyList = document.querySelector('.chat-history-list');
+        if (historyList) {
+          historyList.innerHTML = '<div style="text-align:center;padding:12px;color:var(--muted);font-size:12px">No chat history yet.</div>';
+        }
       }
     } catch (error) {
       console.error('[API] Failed to load chat history:', error);
