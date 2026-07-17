@@ -285,8 +285,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  loadNotifications();
-  setInterval(loadNotifications, 30000); // Check for notifications every 30s
+  if (isAuthPage) {
+    loadNotifications();
+    setInterval(loadNotifications, 30000); // Check for notifications every 30s
+  }
 
   document.querySelectorAll('[data-tooltip="Notifications"]').forEach(btn => {
     btn.addEventListener('click', (e) => {
